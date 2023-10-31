@@ -1,0 +1,16 @@
+.card_box {
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 100px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card_box-item {
+    width: 200px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 8px rgb(161, 156, 156);
+}

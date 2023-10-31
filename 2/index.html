@@ -1,12 +1,90 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Семинар Vue - 1</title>
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
+
+    <div id="app">
+
+        <div class="card_box">
+            <div class="card_box-item" v-for="product in card" :key="product.productID">
+                <p>Название: {{product.productName}}</p>
+                <p>Цена: {{product.productPrice}}</p>
+                <p>Цена: {{product.productQuant}}</p>
+                <p>{{product.productID}}</p>
+                <button @click="addProduct(product)">{{product.productButton}}</button>
+            </div>
+            <h2>{{hello}}</h2>
+            <p>Товаров в корзине: {{countProduct}}</p>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                hello: 'Корзина товаров',
+                countProduct: 0,
+                card: [
+                    {
+                        productID: 1,
+                        productName: 'Телефон',
+                        productPrice: '25',
+                        productQuant: 3,
+                        productButton: 'Добавить в корзину',
+                        productSell: true
+                    },
+                    {
+                        productID: 2,
+                        productName: 'Планшет',
+                        productPrice: '48',
+                        productQuant: 2,
+                        productButton: 'Добавить в корзину',
+                        productSell: true
+                    },
+                    {
+                        productID: 3,
+                        productName: 'Телевизор',
+                        productPrice: '240',
+                        productQuant: 1,
+                        productButton: 'Добавить в корзину',
+                        productSell: true
+                    },
+                    {
+                        productID: 4,
+                        productName: 'Кондиционер',
+                        productPrice: '120',
+                        productQuant: 1,
+                        productButton: 'Добавить в корзину',
+                        productSell: true
+                    }
+                ]
+            },
+            methods: {
+                addProduct(product) {
+                    if (product.productQuant > 0) {
+                        product.productQuant--;
+                        product.productButton = 'Товар закончился';
+                        this.countProduct++;
+                    } else {
+                        alert('Товара нет в наличии')
+                    }
+                }
+            }
+        })
+    </script>
 </body>
+
 </html>
