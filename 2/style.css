@@ -1,7 +1,6 @@
 .card_box {
     max-width: 1000px;
     margin: 0 auto;
-    margin-top: 100px;
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
@@ -13,4 +12,23 @@
     padding: 15px;
     border-radius: 10px;
     box-shadow: 1px 1px 8px rgb(161, 156, 156);
+}
+h2{
+    text-align: center;
+    width: 100%;
+    margin:0px;
+}
+.div14{
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 30px;
+}
+.alert{
+    color: red;
+    text-align: center;
+    font-size: 25px;
 }

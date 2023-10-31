@@ -13,7 +13,14 @@
 
     <div id="app">
 
-        <div class="card_box">
+
+        <div class="div14">
+            <h2>Вам исполнилось 14 лет?</h2>
+            <button @click="shopAccess = true">Да, исполнилось</button>
+            <button @click="shopAccess=false">Нет, мне нет 14</button>
+        </div>
+        <div class="card_box" v-if="shopAccess">
+            <h2>{{hello}}</h2>
             <div class="card_box-item" v-for="product in card" :key="product.productID">
                 <p>Название: {{product.productName}}</p>
                 <p>Цена: {{product.productPrice}}</p>
@@ -21,7 +28,7 @@
                 <p>{{product.productID}}</p>
                 <button @click="addProduct(product)">{{product.productButton}}</button>
             </div>
-            <h2>{{hello}}</h2>
+
             <p>Товаров в корзине: {{countProduct}}</p>
         </div>
 
@@ -37,6 +44,7 @@
             data: {
                 hello: 'Корзина товаров',
                 countProduct: 0,
+                shopAccess: false,
                 card: [
                     {
                         productID: 1,
