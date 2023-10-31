@@ -30,6 +30,11 @@
             </div>
 
             <p>Товаров в корзине: {{countProduct}}</p>
+            <p>Стоимость товаров: {{cardSumm}}</p>
+            <div class="soglasen">
+                <button @click="showTerm = !showTerm">Показать условия доставки</button>
+                <p v-if="showTerm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae amet distinctio mollitia adipisci culpa. Quasi beatae, ducimus aut repudiandae tempore fugiat repellendus explicabo nisi ad, veniam deserunt velit soluta voluptate hic eius sed ipsam saepe quisquam optio similique necessitatibus quam distinctio? Adipisci illum omnis voluptas ducimus molestias dolor quasi laudantium ut rem odio porro necessitatibus a iste officiis, sapiente consectetur minus quos debitis quibusdam nulla corporis officia magni laborum? Doloribus, iusto aliquam molestiae ratione hic fugiat eum. Modi nostrum labore tempore. Incidunt iusto dolorem nisi rerum accusantium! Totam nam magni optio rem aliquid, molestias quaerat necessitatibus impedit magnam nisi mollitia praesentium, enim iure fuga illum. Tempore, excepturi commodi doloremque vitae magnam voluptas explicabo debitis quos tenetur architecto hic dignissimos blanditiis quis voluptatibus cupiditate corrupti repellat, provident vel distinctio eum ducimus ab aliquam, repellendus error. Praesentium asperiores voluptas eveniet quam beatae omnis cum culpa perferendis? Rem laboriosam quisquam officia et veniam libero natus sequi! Repellat magni facilis incidunt possimus dignissimos temporibus amet at dicta nihil. Molestiae voluptatum rem sapiente illo commodi est quae eaque, tempora nulla reiciendis blanditiis qui tempore rerum quod. Quam repudiandae corporis consequuntur ullam quisquam beatae officiis? Possimus voluptatibus, animi corrupti magnam ipsum ex unde dolorum tenetur eligendi sunt. Quibusdam consequatur voluptatibus magnam facilis, alias officiis ipsum veniam autem aliquam ipsam commodi dolores cumque vitae odio porro voluptatum architecto placeat quaerat. Animi repellat cum dolorem tempore quas quasi. Dolor quidem, autem reprehenderit ipsam tenetur iure quia nesciunt consequuntur dignissimos! Laudantium labore odit facilis voluptate ipsa sapiente exercitationem assumenda est deserunt minima, sequi repellendus adipisci amet. Itaque reiciendis dolor, obcaecati dolore commodi unde ratione possimus molestiae sunt delectus eius saepe dolorum voluptates at quo distinctio tempore eum voluptas, officia deleniti necessitatibus nam veritatis fugiat. Soluta, numquam quam assumenda, quo consequuntur voluptate molestias minus velit illo impedit, illum eius magnam!</p>
+            </div>
         </div>
 
     </div>
@@ -45,11 +50,13 @@
                 hello: 'Корзина товаров',
                 countProduct: 0,
                 shopAccess: false,
+                showTerm: false,
+                cardSumm: 0,
                 card: [
                     {
                         productID: 1,
                         productName: 'Телефон',
-                        productPrice: '25',
+                        productPrice: 25,
                         productQuant: 3,
                         productButton: 'Добавить в корзину',
                         productSell: true
@@ -57,7 +64,7 @@
                     {
                         productID: 2,
                         productName: 'Планшет',
-                        productPrice: '48',
+                        productPrice: 48,
                         productQuant: 2,
                         productButton: 'Добавить в корзину',
                         productSell: true
@@ -65,7 +72,7 @@
                     {
                         productID: 3,
                         productName: 'Телевизор',
-                        productPrice: '240',
+                        productPrice: 240,
                         productQuant: 1,
                         productButton: 'Добавить в корзину',
                         productSell: true
@@ -73,7 +80,7 @@
                     {
                         productID: 4,
                         productName: 'Кондиционер',
-                        productPrice: '120',
+                        productPrice: 120,
                         productQuant: 1,
                         productButton: 'Добавить в корзину',
                         productSell: true
@@ -86,6 +93,8 @@
                         product.productQuant--;
                         product.productButton = 'Товар закончился';
                         this.countProduct++;
+                        this.cardSumm = this.cardSumm + product.productPrice;
+                        console.log(this.cardSumm + product.productPrice);
                     } else {
                         alert('Товара нет в наличии')
                     }
