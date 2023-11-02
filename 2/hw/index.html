@@ -14,6 +14,12 @@
             height: 100vh;
         }
 
+        #app {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
         button {
             background-color: #4CAF50;
             border: none;
@@ -23,6 +29,13 @@
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
+            margin-bottom: 100px;
+            align-self: center;
+        }
+
+        p {
+            max-width: 500px;
+            text-align: center;
         }
 
         button:hover {
@@ -32,8 +45,33 @@
 </head>
 
 <body>
+    <!--
+    Часть 1. Работа с макетом
+    По заданному макету создать вёрстку главной страницы (без использования vue).
+    Задание по работе с макетом направлено на подготовку проекта к итоговой аттестации.
+    
+    Часть 2. Задание по Vue
+    1. Создать кнопку "Перевернуть". При клике на кнопку текст кнопки должен перевернуться 
+    и отобразиться в обратном порядке.
+    2. Есть список элементов. Пользователь может добавлять новые элементы списка 
+    с текстом “Новый элемент списка” нажав на кнопку "Добавить".
+    3. *Дополнительное задание: При клике на элемент списка он должен быть удален. (по желанию)
+    -->
+
+
+
     <div id="app">
+        <p>Создать кнопку "Перевернуть". При клике на кнопку текст кнопки должен перевернуться и отобразиться в обратном
+            порядке.</p>
         <button @click="reverseText">{{buttonTextReverse}}</button>
+
+        <p>Есть список элементов. Пользователь может добавлять новые элементы списка с текстом “Новый элемент списка”
+            нажав на кнопку "Добавить".</p>
+        <ul>
+            <li class="li_item" v-for="item in newElement" :key="item.id" v-text="liText" onclick="this.remove()"></li>
+        </ul>
+        <button @click="addElement">Добавить элемент в список</button>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
     <script>
@@ -41,16 +79,18 @@
             el: '#app',
             data: {
                 buttonTextReverse: 'Перевернуть текст',
-                buttonClick: true
+                liText: 'Новый элемент списка',
+                newElement: ['Новый элемент списка']
             },
             methods: {
                 reverseText() {
-                    let text = this.buttonTextReverse.split('');
-                    text = text.reverse();
-                    text = text.join('');
+                    let text = this.buttonTextReverse.split('').reverse().join('');
                     this.buttonTextReverse = text;
-                    return text;
-                }
+                },
+                addElement() {
+                    this.newElement.push('Новый элемент списка')
+                    console.log(this.newElement);
+                },
             },
             computed: {
 
