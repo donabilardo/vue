@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лекция 1 Vue</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+
+    <div id="app">
+        <h1>{{message}}</h1>
+        <button v-on:click="sayHello">Click button</button>
+
+        <h2>Счетчик</h2>
+        <button v-on:click="increaseCounter(5)">increase</button>
+        <p>{{counter}}</p>
+
+        <h3 v-on:mousemove="mouseMove($event)">Mouse move = X:{{x}} Y:{{y}}<span v-on:mousemove.stop>stop text</span>
+        </h3>
+
+        <p v-html="bigText" v-on:click="textUp($event)"></p>
+
+        <h2 v-if="productAddInCard">Добавить товар в корзину?</h2>
+        <h2 v-else="!productAddInCard">Товар добавлен в корзину!!!</h2>
+        <button @click="productAddInCard = !productAddInCard">Add product in card</button>
+        <h2 v-show="!productAddInCard">SHOW CARD</h2>
+
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                productAddInCard: true,
+                message: 'Hello VUE',
+                counter: 0,
+                x: 0,
+                y: 0,
+                bigText: 'big text <span class="big__text">New text</span> big text',
+            },
+            methods: {
+                mouseMove(event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                sayHello() {
+                    this.message = 'Text click';
+                },
+                increaseCounter(step) {
+                    this.counter = this.counter + step;
+                },
+                textUp(event) {
+                    this.bigText.style.fontSize = 33;
+                },
+            },
+        })
+    </script>
+</body>
+</html>
