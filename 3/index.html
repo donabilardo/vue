@@ -59,6 +59,14 @@
             <button @click="calc('mult')">*</button>
             <button @click="calc('division')">/</button>
         </div>
+
+        <br>
+
+        <h3>Конструктор</h3>
+        <input type="text" v-model="blockWidth">
+        <input type="text" v-model="blockHeight">
+        <input type="color" v-model="blockColor">
+        <div class="block" :style="changeBlock">dsdsdsd</div>
     </div>
 
 
@@ -71,6 +79,9 @@
         new Vue({
             el: '#app',
             data: {
+                blockWidth: 100,
+                blockHeight: 100,
+                blockColor: 'red',
                 one: 0,
                 two: 0,
                 result: 0,
@@ -104,7 +115,13 @@
                 }
             },
             computed: {
-
+                changeBlock() {
+                    return {
+                        width: `${this.blockWidth}px`,
+                        height: `${this.blockHeight}px`,
+                        backgroundColor: this.blockColor
+                    }
+                }
             }
         })
     </script>
