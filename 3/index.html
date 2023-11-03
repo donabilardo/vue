@@ -6,13 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Урок 3. Лекция: Методы и работа с контентом</title>
 </head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+    }
+</style>
 
 <body>
 
 
     <div id="app">
+        <input type="text" name="text" id="text" @keyup.enter="send">
+        <button @click="send">Отправить</button>
 
+        <h3>BIND-им элементы</h3>
+        <a :href="linkHref">My link</a>
+        <img :src="linkImg" :alt="linkImg" :style="styleImg">
 
+        <br>
+
+        <h3>MODEL-DATA</h3>
+        <input type="text" v-model="modelData"><br>
+        <span>Вывод из input: {{modelData}}</span>
     </div>
 
 
@@ -25,10 +44,19 @@
         new Vue({
             el: '#app',
             data: {
-
+                modelData: '',
+                linkHref: 'about.blank',
+                linkImg: 'vue.png',
+                styleImg: {
+                    width: '300px',
+                    borderRadius: '10px',
+                    border: '1px black solid'
+                }
             },
             methods: {
-
+                send() {
+                    console.log('Данные из INPUT');
+                }
             },
             computed: {
 
