@@ -14,6 +14,13 @@
         flex-direction: column;
         height: 100vh;
     }
+
+    .calc_button {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 10px;
+    }
 </style>
 
 <body>
@@ -32,6 +39,26 @@
         <h3>MODEL-DATA</h3>
         <input type="text" v-model="modelData"><br>
         <span>Вывод из input: {{modelData}}</span>
+
+        <!-- 
+            v-model.lazy - вывод после потери фокуса
+            v-model.trim - удаление пробелов
+            v-model.number - приведение к числу
+        -->
+
+        <br>
+
+        <h3>Калькулятор</h3>
+        <input type="text" name="one" id="one" v-model.number="one">
+        <input type="text" name="two" id="two" v-model.number="two">
+
+        <span class="res">{{result}}</span>
+        <div class="calc_button">
+            <button @click="calc('plus')">+</button>
+            <button @click="calc('minus')">-</button>
+            <button @click="calc('mult')">*</button>
+            <button @click="calc('division')">/</button>
+        </div>
     </div>
 
 
@@ -44,6 +71,9 @@
         new Vue({
             el: '#app',
             data: {
+                one: 0,
+                two: 0,
+                result: 0,
                 modelData: '',
                 linkHref: 'about.blank',
                 linkImg: 'vue.png',
@@ -56,6 +86,21 @@
             methods: {
                 send() {
                     console.log('Данные из INPUT');
+                },
+                calc(param) {
+                    if (param === 'plus') {
+                        this.result = this.one + this.two
+                        return param
+                    } else if (param === 'minus') {
+                        this.result = this.one - this.two
+                        return param
+                    } else if (param === 'mult') {
+                        this.result = this.one * this.two
+                        return param
+                    } else if (param === 'division') {
+                        this.result = this.one / this.two
+                        return param
+                    }
                 }
             },
             computed: {
