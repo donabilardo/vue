@@ -12,7 +12,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        height: 100vh;
+        min-height: 100vh;
     }
 
     .calc_button {
@@ -67,6 +67,14 @@
         <input type="text" v-model="blockHeight">
         <input type="color" v-model="blockColor">
         <div class="block" :style="changeBlock">dsdsdsd</div>
+
+        <br>
+
+        <h3>Отрисовка списков</h3>
+        <ul>
+            <li v-for="item in listArr" :key="item.id">{{ item }}</li>
+        </ul>
+        <input type="text" v-model="newItem" @keyup.enter="addItem">
     </div>
 
 
@@ -79,9 +87,11 @@
         new Vue({
             el: '#app',
             data: {
+                newItem: '',
+                listArr: ['Элемент списка', 'Элемент списка', 'Элемент списка5', 'Элемент списка88', 'Элемент списка5445'],
                 blockWidth: 100,
                 blockHeight: 100,
-                blockColor: 'red',
+                blockColor: '#222222',
                 one: 0,
                 two: 0,
                 result: 0,
@@ -95,6 +105,10 @@
                 }
             },
             methods: {
+                addItem() {
+                    this.listArr.push(this.newItem);
+                    this.newItem = ''
+                },
                 send() {
                     console.log('Данные из INPUT');
                 },
