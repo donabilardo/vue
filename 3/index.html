@@ -35,6 +35,17 @@
         box-shadow: 0px 4px 10px rgba(35, 33, 33, 0.12), 1px -2px 30px 1px rgba(53, 49, 49, 0.27);
         margin-bottom: 30px;
     }
+
+    .btn {
+        width: 125px;
+        height: 35px;
+        text-align: center;
+    }
+
+    .like {
+        background-color: crimson;
+        color: white;
+    }
 </style>
 
 <body>
@@ -97,7 +108,7 @@
         <article v-for="item in article" :key="item.id">
             <h2>{{item.title}}</h2>
             <p>{{item.text}}</p>
-            <button>Подробнее...</button>
+            <button class="btn" @click="likeToggle = !likeToggle" :class="{like: likeToggle}">Подробнее...</button>
         </article>
 
     </div>
@@ -111,6 +122,7 @@
         new Vue({
             el: '#app',
             data: {
+                likeToggle: false,
                 article: [
                     {
                         title: 'Статья 1',
