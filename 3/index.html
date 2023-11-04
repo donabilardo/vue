@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 3. Лекция: Методы и работа с контентом</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .calc_button {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    article {
+        max-width: 300px;
+        border-color: #f5eded;
+        border-style: solid;
+        border-width: 1px 1px 1px;
+        overflow: auto;
+        padding: 19px;
+        background: #b6b6e0;
+        border: 2px solid #ffffff;
+        border-radius: 3px;
+        box-shadow: 0px 4px 10px rgba(35, 33, 33, 0.12), 1px -2px 30px 1px rgba(53, 49, 49, 0.27);
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        width: 125px;
+        height: 35px;
+        text-align: center;
+    }
+
+    .like {
+        background-color: crimson;
+        color: white;
+    }
+</style>
+
+<body>
+
+
+    <div id="app">
+        <input type="text" name="text" id="text" @keyup.enter="send">
+        <button @click="send">Отправить</button>
+
+        <h3>BIND-им элементы</h3>
+        <a :href="linkHref">My link</a>
+        <img :src="linkImg" :alt="linkImg" :style="styleImg">
+
+        <br>
+
+        <h3>MODEL-DATA</h3>
+        <input type="text" v-model="modelData"><br>
+        <span>Вывод из input: {{modelData}}</span>
+
+        <!-- 
+            v-model.lazy - вывод после потери фокуса
+            v-model.trim - удаление пробелов
+            v-model.number - приведение к числу
+        -->
+
+        <br>
+
+        <h3>Калькулятор</h3>
+        <input type="text" name="one" id="one" v-model.number="one">
+        <input type="text" name="two" id="two" v-model.number="two">
+
+        <span class="res">{{result}}</span>
+        <div class="calc_button">
+            <button @click="calc('plus')">+</button>
+            <button @click="calc('minus')">-</button>
+            <button @click="calc('mult')">*</button>
+            <button @click="calc('division')">/</button>
+        </div>
+
+        <br>
+
+        <h3>Конструктор</h3>
+        <input type="text" v-model="blockWidth">
+        <input type="text" v-model="blockHeight">
+        <input type="color" v-model="blockColor">
+        <div class="block" :style="changeBlock">dsdsdsd</div>
+
+        <br>
+
+        <h3>Отрисовка списков</h3>
+        <ul>
+            <li v-for="item in listArr" :key="item.id">{{ item }}</li>
+        </ul>
+        <input type="text" v-model="newItem" @keyup.enter="addItem">
+
+
+        <br>
+
+        <h3>Вывод статей</h3>
+        <article v-for="item in article" :key="item.id">
+            <h2>{{item.title}}</h2>
+            <p>{{item.text}}</p>
+            <button class="btn" @click="likeToggle = !likeToggle" :class="{like: likeToggle}">Подробнее...</button>
+        </article>
+
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                likeToggle: false,
+                article: [
+                    {
+                        title: 'Статья 1',
+                        text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, cupiditate tempora rem molestias iure repudiandae enim repellendus inventore ad labore nisi ea velit assumenda temporibus suscipit hic maiores doloremque vitae?'
+                    },
+                    {
+                        title: 'Статья 2',
+                        text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, cupiditate tempora rem molestias iure repudiandae enim repellendus inventore ad labore nisi ea velit assumenda temporibus suscipit hic maiores doloremque vitae?'
+                    },
+                    {
+                        title: 'Статья 3',
+                        text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, cupiditate tempora rem molestias iure repudiandae enim repellendus inventore ad labore nisi ea velit assumenda temporibus suscipit hic maiores doloremque vitae?'
+                    },
+                ],
+                newItem: '',
+                newArticle: '',
+                listArr: ['Элемент списка', 'Элемент списка', 'Элемент списка5', 'Элемент списка88', 'Элемент списка5445'],
+                blockWidth: 100,
+                blockHeight: 100,
+                blockColor: '#222222',
+                one: 0,
+                two: 0,
+                result: 0,
+                modelData: '',
+                linkHref: 'about.blank',
+                linkImg: 'vue.png',
+                styleImg: {
+                    width: '300px',
+                    borderRadius: '10px',
+                    border: '1px black solid'
+                }
+            },
+            methods: {
+                addItem() {
+                    this.listArr.push(this.newItem);
+                    this.newItem = ''
+                },
+                send() {
+                    console.log('Данные из INPUT');
+                },
+                calc(param) {
+                    if (param === 'plus') {
+                        this.result = this.one + this.two
+                        return param
+                    } else if (param === 'minus') {
+                        this.result = this.one - this.two
+                        return param
+                    } else if (param === 'mult') {
+                        this.result = this.one * this.two
+                        return param
+                    } else if (param === 'division') {
+                        this.result = this.one / this.two
+                        return param
+                    }
+                }
+            },
+            computed: {
+                changeBlock() {
+                    return {
+                        width: `${this.blockWidth}px`,
+                        height: `${this.blockHeight}px`,
+                        backgroundColor: this.blockColor
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
