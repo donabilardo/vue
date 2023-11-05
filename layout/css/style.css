@@ -376,8 +376,6 @@ body {
 .container {
   width: 1200px;
   margin: 0 auto;
-  border-left: 1px solid #E6E6E6;
-  border-right: 1px solid #E6E6E6;
 }
 
 h2 {
