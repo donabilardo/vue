@@ -1,3 +1,11 @@
 body{
-    font-family: "DM Serif Display";
+    font-family: 'DM', sans-serif;
+    letter-spacing: 0.22px;
+}
+.container{
+    width: 1200px;
+    margin: 0 auto;
+    border-left: 1px solid $vertical_line;
+    border-right: 1px solid $vertical_line;
+    height: 100vh;
 }
