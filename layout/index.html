@@ -66,6 +66,15 @@
                 </div>
             </div>
         </div>
+        <div class="counter">
+            <div class="counter_box">
+                <div class="counter_box-item" v-for="item in counter" :key="item.id" :id="'id_counter'+item.counterID">
+                    <div class="counter_box-number">{{ item.num }}</div>
+                    <div class="counter_box-text">{{ item.name }}</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js" defer></script>
