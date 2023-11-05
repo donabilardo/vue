@@ -35,12 +35,36 @@
         <div class="container">
             <div class="hero">
                 <h1 class="hero__title">Let your home be unique</h1>
-                <p class="hero__text">There are many variations of the passages of lorem Ipsum fromavailable, majority.</p>
-                <button class="hero__button">Get started<img src="img/arrow.svg" alt="Get Started" class="hero_button-img"></button>
+                <p class="hero__text">There are many variations of the passages of lorem Ipsum fromavailable, majority.
+                </p>
+                <button class="hero__button">Get started<img src="img/arrow.svg" alt="Get Started"
+                        class="hero_button-img"></button>
             </div>
         </div>
         <div class="container">
-            cdxcxcd
+            <div class="project">
+                <h2 class="project__title">Follow our projects</h2>
+                <p class="project_text">
+                    It is a long established fact that a reader will be distracted by the of readable content of page
+                    lookings at its layouts points.
+                </p>
+
+                <div class="projectbox">
+                    <div class="projectbox__item" v-for="item in project" :key="item.id">
+                        <img :src="item.img" :alt="item.name" class="project__box-img" :id="'id'+item.idCSS">
+                        <div class="projectbox__footer">
+                            <div class="projectbox__footer-left">
+                                <h3 class="projectbox__left-title">{{ item.name }}</h3>
+                                <div class="projectbox__left-text">{{ item.text }}</div>
+                            </div>
+                            <a class="projectbox__right">
+                                >
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 

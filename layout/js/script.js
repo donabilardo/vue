@@ -3,7 +3,7 @@ new Vue({
     data: {
         logoImg: 'img/logo.svg',
         siteName: 'GB - VUE.js',
-        navbar:[
+        navbar: [
             {
                 name: 'Home',
                 link: '/'
@@ -16,7 +16,33 @@ new Vue({
                 name: 'Blog',
                 link: '#'
             },
-        ]
+        ],
+        project: [
+            {
+                name: 'Modern kitchan',
+                text: 'Decor / Artchitecture',
+                img: 'img/project/1.png',
+                idCSS: '1'
+            },
+            {
+                name: 'Modern kitchan',
+                text: 'Decor / Artchitecture',
+                img: 'img/project/2.png',
+                idCSS: '2'
+            },
+            {
+                name: 'Modern kitchan',
+                text: 'Decor / Artchitecture',
+                img: 'img/project/3.png',
+                idCSS: '3'
+            },
+            {
+                name: 'Modern kitchan',
+                text: 'Decor / Artchitecture',
+                img: 'img/project/4.png',
+                idCSS: '4'
+            },
+        ],
     },
     methods: {
 

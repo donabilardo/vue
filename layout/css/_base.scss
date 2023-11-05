@@ -12,3 +12,24 @@ body {
     border-left: 1px solid $vertical_line;
     border-right: 1px solid $vertical_line;
 }
+
+h2 {
+    color: $text_accent;
+    text-align: center;
+    font-family: 'DM', Serif;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 125%;
+    /* 62.5px */
+    letter-spacing: 1px;
+}
+
+h3 {
+    color: $text_accent;
+    font-family: 'DM', Serif;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 125%;
+    /* 31.25px */
+    letter-spacing: 0.5px;
+}
