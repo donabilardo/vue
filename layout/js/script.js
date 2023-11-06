@@ -6,7 +6,7 @@ new Vue({
         navbar: [
             {
                 name: 'Home',
-                link: '/'
+                link: 'index.html'
             },
             {
                 name: 'Project',
@@ -14,7 +14,7 @@ new Vue({
             },
             {
                 name: 'Blog',
-                link: '#'
+                link: 'blog.html'
             },
         ],
         project: [
@@ -65,6 +65,64 @@ new Vue({
                 counterID: 4
             },
         ],
+        article:[
+            {
+                name: 'let`s get solution for building construction work',
+                category: 'Kitchan design',
+                date: '',
+                img: 'img/article_news/1.png',
+                imgR: 'img/article_news/1-r.png',
+                text: ''
+            },
+            {
+                name: 'Low cost latest invented interior designing ideas.',
+                category: 'Living design',
+                date: '',
+                img: 'img/article_news/2.png',
+                imgR: 'img/article_news/2-r.png',
+                text: ''
+            },
+            {
+                name: 'Best for any office & business interior solution',
+                category: 'Interior design',
+                date: '',
+                img: 'img/article_news/3.png',
+                imgR: 'img/article_news/3-r.png',
+                text: ''
+            },
+            {
+                name: 'let`s get solution for building construction work',
+                category: 'Kitchan design',
+                date: '',
+                img: 'img/article_news/4.png',
+                imgR: 'img/article_news/4-r.png',
+                text: ''
+            },
+            {
+                name: 'Low cost latest invented interior designing ideas.',
+                category: 'Living design',
+                date: '',
+                img: 'img/article_news/5.png',
+                imgR: 'img/article_news/5-r.png',
+                text: ''
+            },
+            {
+                name: 'Best for any office & business interior solution',
+                category: 'Interior design',
+                date: '',
+                img: 'img/article_news/6.png',
+                imgR: 'img/article_news/6-r.png',
+                text: ''
+            },
+            {
+                name: 'low cost latest invented interior designing ideas',
+                category: 'Kitchan design',
+                date: '',
+                img: 'img/article_news/7.png',
+                imgR: 'img/article_news/7-r.png',
+                text: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief. Lorem Ipsum is not simply random text. It has roots in a piece of classica.'
+            },
+        ]
     },
     methods: {
 

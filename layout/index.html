@@ -74,6 +74,32 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <section class="newsindex">
+                <h2 class="newsindex__title">Articles &amp;&nbsp;News</h2>
+                <p class="newsindex__text">It&nbsp;is&nbsp;a&nbsp;long established fact that a&nbsp;reader will
+                    be&nbsp;distracted by&nbsp;the of&nbsp;readable content of&nbsp;a&nbsp;page when lookings
+                    at&nbsp;its layouts the points of&nbsp;using.</p>
+                <div class="newindex__box">
+                    <article class="newsindex__item" v-for="item in article.slice(0,3)" :key="item.id">
+                        <div class="newsindex__item-img">
+                            <img :src="item.img" :srcset="item.imgR" :alt="item.name" class="newsindex__pic">
+                            <span class="newsindex__img-category">{{ item.category }}</span>
+                        </div>
+                        <h3 class="newsindex__item-name">{{ item.name }}</h3>
+                        <div class="newsindex__item-footer">
+                            <div class="newsindex__footer-left">24 December 20223</div>
+                            <div class="newsindex__footer-right">
+                                <a href="#">
+                                    <img src="img/news_arrow.svg" :alt="item.name">
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+        <div style="height: 1000px;"></div>
 
     </div>
 
