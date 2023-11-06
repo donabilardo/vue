@@ -1,4 +1,6 @@
-.newsindex {}
+.newsindex {
+    padding-bottom: 96px;
+}
 
 .newindex__box {
     display: flex;
@@ -76,7 +78,3 @@
     display: flex;
     justify-content: space-between;
 }
-
-.newsindex__footer-left {}
-
-.newsindex__footer-right {}

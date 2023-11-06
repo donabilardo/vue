@@ -3,6 +3,10 @@ new Vue({
     data: {
         logoImg: 'img/logo.svg',
         siteName: 'GB - VUE.js',
+        siteSlogan: 'It is a long established fact that a reader will be distracted lookings.',
+        address: '55 East Birchwood Ave. Brooklyn, New York 11201',
+        telephon: '(123) 456 - 7890',
+        email: 'contact@interno.com',
         navbar: [
             {
                 name: 'Home',
