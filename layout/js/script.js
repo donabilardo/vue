@@ -69,11 +69,11 @@ new Vue({
                 counterID: 4
             },
         ],
-        article:[
+        article: [
             {
                 name: 'let`s get solution for building construction work',
                 category: 'Kitchan design',
-                date: '',
+                date: '2017-02-06',
                 img: 'img/article_news/1.png',
                 imgR: 'img/article_news/1-r.png',
                 text: ''
