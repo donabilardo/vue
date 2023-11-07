@@ -124,7 +124,7 @@ new Vue({
                 date: '2017-09-076',
                 img: 'img/article_news/7.png',
                 imgR: 'img/article_news/7-r.png',
-                text: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief. Lorem Ipsum is not simply random text. It has roots in a piece of classica.'
+                text: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.' + '\n' +'Lorem Ipsum is not simply random text. It has roots in a piece of classica.'
             },
         ]
     },

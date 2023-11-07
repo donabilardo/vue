@@ -37,7 +37,20 @@
             </div>
         </header>
         <main class="main">
-
+            <div class="container">
+                <h2 class="latest__post">Latest Post</h2>
+                <div class="post__box"  v-for="item in article.slice(6,7)" :key="item.id">
+                    <img :src="item.img" :srcset="item.imgR" :alt="item.name" class="post__box-img">
+                    <div class="post__box-content">
+                        <h3 class="post__box-title">{{item.name}}</h3>
+                        <p class="post__box-text">{{item.text}}</p>
+                        <div class="post__box-footer">
+                            <span class="post__box-date">{{item.date}}</span>
+                            <img src="img/news_arrow.svg" alt="alt">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <div class="container">
