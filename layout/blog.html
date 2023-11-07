@@ -50,6 +50,36 @@
                         </div>
                     </div>
                 </div>
+
+                <h2 class="latest__post">Articles & News</h2>
+
+
+                <section class="newsindex">
+                    <div class="newindex__box">
+                        <article class="newsindex__item" v-for="item in article.slice(0,6)" :key="item.id">
+                            <div class="newsindex__item-img">
+                                <img :src="item.img" :srcset="item.imgR" :alt="item.name" class="newsindex__pic">
+                                <span class="newsindex__img-category">{{ item.category }}</span>
+                            </div>
+                            <h3 class="newsindex__item-name">{{ item.name }}</h3>
+                            <div class="newsindex__item-footer">
+                                <div class="newsindex__footer-left">{{ item.date}}</div>
+                                <div class="newsindex__footer-right">
+                                    <a href="#">
+                                        <img src="img/news_arrow.svg" :alt="item.name">
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+
+            <div class="paginator">
+                <div class="paginator__item paginator__item-active">01</div>
+                <div class="paginator__item">02</div>
+                <div class="paginator__item">03</div>
+                <div class="paginator__item">></div>
             </div>
         </main>
 

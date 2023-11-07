@@ -15,6 +15,7 @@
     border-radius: 62px;
     border: 1px solid #E7E7E7;
     box-shadow: 0px 10px 30px 0px rgba(255, 255, 255, 0.25);
+    margin-bottom: 150px;
 
     &:hover {
         border: 1px solid #E7E7E7;
@@ -58,4 +59,40 @@
     line-height: 150%;
     /* 24px */
     letter-spacing: 0.16px;
+}
+
+
+.paginator {
+    padding-top: 51px;
+    padding-bottom: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.paginator__item {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid $yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #292F36;
+    font-family: 'Jost';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    /* 24px */
+    text-transform: capitalize;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .paginator__item-active {
+        background-color: grey;
+        color: white;
+    }
 }
