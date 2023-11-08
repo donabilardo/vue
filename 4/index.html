@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 4. Семинар: Методы и работа с контентом</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container">
+            <div class="panel">
+                <h1>Каталог товаров</h1>
+            </div>
+            <div class="result">
+                <div class="result__item" v-for="item in product" :key="item.id">
+                    <h2>{{item.name}}</h2>
+                    <img :src="item.img" :alt="item.name">
+                    <div class="price">Стоимость: {{item.price}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+
+</html>
