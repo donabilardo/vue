@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GB - VUE.js</title>
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="navbar" style="padding-bottom: 45px;">
+
+                <div class="nav__logo">
+                    <a href="#" class="nav__logo-link" :title="siteName">
+                        <img :src="logoImg" :alt="siteName" class="nav__logo-img">
+                        <span>Interno</span>
+                    </a>
+                </div>
+
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__list-item" v-for="item in navbar" :key="item.id">
+                            <a :href="item.link" class="nav__list-link" :title="item.name">{{item.name}}</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+        <header class="header">
+            <div class="header__box">
+                <h1 class="header__box-title">Articles & News</h1>
+                <div class="header__box-breadcrump">Home / Blog</div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="container">
+                <h2 class="latest__post">Latest Post</h2>
+                <div class="post__box"  v-for="item in article.slice(6,7)" :key="item.id">
+                    <img :src="item.img" :srcset="item.imgR" :alt="item.name" class="post__box-img">
+                    <div class="post__box-content">
+                        <h3 class="post__box-title">{{item.name}}</h3>
+                        <p class="post__box-text">{{item.text}}</p>
+                        <div class="post__box-footer">
+                            <span class="post__box-date">{{item.date}}</span>
+                            <img src="img/news_arrow.svg" alt="alt">
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="latest__post">Articles & News</h2>
+
+
+                <section class="newsindex">
+                    <div class="newindex__box">
+                        <article class="newsindex__item" v-for="item in article.slice(0,6)" :key="item.id">
+                            <div class="newsindex__item-img">
+                                <img :src="item.img" :srcset="item.imgR" :alt="item.name" class="newsindex__pic">
+                                <span class="newsindex__img-category">{{ item.category }}</span>
+                            </div>
+                            <h3 class="newsindex__item-name">{{ item.name }}</h3>
+                            <div class="newsindex__item-footer">
+                                <div class="newsindex__footer-left">{{ item.date}}</div>
+                                <div class="newsindex__footer-right">
+                                    <a href="#">
+                                        <img src="img/news_arrow.svg" :alt="item.name">
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+
+            <div class="paginator">
+                <div class="paginator__item paginator__item-active">01</div>
+                <div class="paginator__item">02</div>
+                <div class="paginator__item">03</div>
+                <div class="paginator__item">></div>
+            </div>
+        </main>
+
+        <div class="container">
+            <footer class="footer">
+                <div class="footer_left">
+                    <div class="nav__logo">
+                        <a href="#" class="nav__logo-link" :title="siteName">
+                            <img :src="logoImg" :alt="siteName" class="nav__logo-img">
+                            <span>Interno</span>
+                        </a>
+                    </div>
+                    <p class="footer__left-text">{{ siteSlogan }}</p>
+                    <div class="social">
+                        <img src="img/social/twitter.svg" alt="twitter">
+                        <img src="img/social/in.svg" alt="In XZ">
+                    </div>
+                </div>
+                <div class="footer_center">
+                    <h3>Pages</h3>
+                    <ul class="footer__center-list">
+                        <li class="footer_list-item" v-for="item in navbar" :key="item.id">
+                            <a :href="item.name" class="footer__item-link" :title="item.name">{{ item.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer_right">
+                    <h3>Contact</h3>
+                    <p>{{ address }}</p>
+                    <p>{{ email }}</p>
+                    <p>{{ telephon }}</p>
+                </div>
+            </footer>
+        </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

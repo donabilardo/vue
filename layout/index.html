@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GB - VUE.js</title>
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="container">
+            <div class="navbar">
+
+                <div class="nav__logo">
+                    <a href="#" class="nav__logo-link" :title="siteName">
+                        <img :src="logoImg" :alt="siteName" class="nav__logo-img">
+                        <span>Interno</span>
+                    </a>
+                </div>
+
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__list-item" v-for="item in navbar" :key="item.id">
+                            <a :href="item.link" class="nav__list-link" :title="item.name">{{item.name}}</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="hero">
+                <h1 class="hero__title">Let your home be unique</h1>
+                <p class="hero__text">There are many variations of the passages of lorem Ipsum fromavailable, majority.
+                </p>
+                <button class="hero__button">Get started<img src="img/arrow.svg" alt="Get Started"
+                        class="hero_button-img"></button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="project">
+                <h2 class="project__title">Follow our projects</h2>
+                <p class="project_text">
+                    It is a long established fact that a reader will be distracted by the of readable content of page
+                    lookings at its layouts points.
+                </p>
+
+                <div class="projectbox">
+                    <div class="projectbox__item" v-for="item in project" :key="item.id">
+                        <img :src="item.img" :alt="item.name" class="project__box-img" :id="'id'+item.idCSS">
+                        <div class="projectbox__footer">
+                            <div class="projectbox__footer-left">
+                                <h3 class="projectbox__left-title">{{ item.name }}</h3>
+                                <div class="projectbox__left-text">{{ item.text }}</div>
+                            </div>
+                            <a class="projectbox__right">
+                                >
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="counter">
+            <div class="counter_box">
+                <div class="counter_box-item" v-for="item in counter" :key="item.id" :id="'id_counter'+item.counterID">
+                    <div class="counter_box-number">{{ item.num }}</div>
+                    <div class="counter_box-text">{{ item.name }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <section class="newsindex">
+                <h2 class="newsindex__title">Articles &amp;&nbsp;News</h2>
+                <p class="newsindex__text">It&nbsp;is&nbsp;a&nbsp;long established fact that a&nbsp;reader will
+                    be&nbsp;distracted by&nbsp;the of&nbsp;readable content of&nbsp;a&nbsp;page when lookings
+                    at&nbsp;its layouts the points of&nbsp;using.</p>
+                <div class="newindex__box">
+                    <article class="newsindex__item" v-for="item in article.slice(0,3)" :key="item.id">
+                        <div class="newsindex__item-img">
+                            <img :src="item.img" :srcset="item.imgR" :alt="item.name" class="newsindex__pic">
+                            <span class="newsindex__img-category">{{ item.category }}</span>
+                        </div>
+                        <h3 class="newsindex__item-name">{{ item.name }}</h3>
+                        <div class="newsindex__item-footer">
+                            <div class="newsindex__footer-left">{{ item.date}}</div>
+                            <div class="newsindex__footer-right">
+                                <a href="#">
+                                    <img src="img/news_arrow.svg" :alt="item.name">
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <div class="container">
+            <footer class="footer">
+                <div class="footer_left">
+                    <div class="nav__logo">
+                        <a href="#" class="nav__logo-link" :title="siteName">
+                            <img :src="logoImg" :alt="siteName" class="nav__logo-img">
+                            <span>Interno</span>
+                        </a>
+                    </div>
+                    <p class="footer__left-text">{{ siteSlogan }}</p>
+                    <div class="social">
+                        <img src="img/social/twitter.svg" alt="twitter">
+                        <img src="img/social/in.svg" alt="In XZ">
+                    </div>
+                </div>
+                <div class="footer_center">
+                    <h3>Pages</h3>
+                    <ul class="footer__center-list">
+                        <li class="footer_list-item" v-for="item in navbar" :key="item.id">
+                            <a :href="item.name" class="footer__item-link" :title="item.name">{{ item.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer_right">
+                    <h3>Contact</h3>
+                    <p>{{ address }}</p>
+                    <p>{{ email }}</p>
+                    <p>{{ telephon }}</p>
+                </div>
+            </footer>
+        </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

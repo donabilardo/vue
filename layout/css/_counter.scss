@@ -1,0 +1,82 @@
+.counter {
+    background-color: #F4F0EC;
+    margin-bottom: 95px;
+}
+
+.counter_box {
+    margin: 0 auto;
+    max-width: 1200px;
+    height: 457px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.counter_box-item {
+    text-align: center;
+    width: 245px;
+    height: 155px;
+    position: relative;
+}
+
+
+
+.counter_box-number {
+    font-family: 'DM', Serif;
+    font-size: 85px;
+    line-height: 125%;
+    /* 106.25px */
+    letter-spacing: 1.7px;
+    color: $yellow;
+    padding-bottom: 12px;
+}
+
+.counter_box-text {
+    color: $text_color;
+    font-family: 'Jost', sans-serif;
+    font-size: 22px;
+    line-height: 150%;
+    /* 33px */
+    letter-spacing: 0.22px;
+    text-transform: capitalize;
+}
+
+#id_counter1::after {
+    content: '';
+    height: 130px;
+    width: 2px;
+    position: absolute;
+    top: 15px;
+    right: -26px;
+    background-color: $yellow;
+}
+
+#id_counter2::after {
+    content: '';
+    height: 130px;
+    width: 2px;
+    position: absolute;
+    top: 15px;
+    right: -26px;
+    background-color: $yellow;
+}
+
+#id_counter3::after {
+    content: '';
+    height: 130px;
+    width: 2px;
+    position: absolute;
+    top: 15px;
+    right: -26px;
+    background-color: $yellow;
+}
+
+#id_counter1 .counter_box-text {
+    text-align: left;
+}
+
+#id_counter4 .counter_box-text {
+    text-align: right;
+}
+
