@@ -1,11 +1,12 @@
-const v = new Vue({
+new Vue({
     el: '#app',
     data: {
         product: [
             {
                 name: 'Телевизор',
                 price: 125,
-                img: 'https://static.nix.ru/images/sony-kd-50x81jr-5418432254.jpeg?good_id=541843&width=500&height=500&view_id=2254'
+                img: 'https://static.nix.ru/images/sony-kd-50x81jr-5418432254.jpeg?good_id=541843&width=500&height=500&view_id=2254',
+                date: new Date(Date.UTC(2017, 11, 11))
             },
             {
                 name: 'Клавиатура',
@@ -33,13 +34,26 @@ const v = new Vue({
                 img: 'https://www.adverti.ru/media/catalog/product/1/0/102106.jpg'
             },
         ],
+        discount: 0,
+        showDiscount: false
     },
     methods: {
         al: function () {
-            alert(this.test)
+            alert(this.product)
+        },
+        discount1: function () {
+            this.discount = Math.floor(Math.random() * 20);
+            alert(this.discount)
+        },
+        discount() {
+            this.discount = Math.floor(Math.random() * 20);
+            alert(this.discount)
         }
     },
     computed: {
-
+        getDiscount() {
+            return (this.product.price - (this.product.price / 100) * this.discount);
+        }
     }
+
 })
