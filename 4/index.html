@@ -24,13 +24,22 @@
             <div class="panel">
                 <h1>Каталог товаров</h1>
             </div>
+            <div class="filter_panel">
+                <label for="filter">Сортировать товары: </label>
+                <select name="filter" id="filter" @change="sortArray" v-model="select">
+                    <option value="default" selected>Сортировка по цене</option>
+                    <option value="min">Сначала дешевые</option>
+                    <option value="max">Сначала дорогие</option>
+                </select>
+
+            </div>
             <div class="result">
                 <div class="result__item" v-for="item in product" :key="item.id">
                     <h2>{{item.name}}</h2>
                     <img :src="item.img" :alt="item.name">
-                    <div class="price">Стоимость: {{item.price}}</div>
+                    <div class="price">Стоимость: <b>{{item.price}}</b></div>
                     <div>{{(item.date).getFullYear()}}</div><br>
-                    <button @click="getDiscount">Получить скидку</button>
+                    <button @click="getDiscount" id="discButton">Получить скидку</button>
                     <div>Цена со скидкой: {{item.price - (item.price * discount)/100}}</div>
                     <!-- Добавьте кнопку, которая будет изменять цену товара. 
                     При нажатии на кнопку должна генерироваться скидка на товар от 1 до 20%
@@ -59,15 +68,37 @@
 
             <div class="result">
                 <div class="result__item" v-for="item in contacts" :key="item.id">
-                    <h2>{{item.name}} {{item.secondName}} ID: {{item.id}}</h2>
+                    <h2>{{item.name}} {{item.secondName}} ID: {{item.idUsr}}</h2>
+                    <img :src="item.avatar" :alt="item.name" :title="item.name">
                     <p>{{item.eMail}}</p>
+                </div>
+                <div class="add__contact">
+                    <h2 style="text-align: center;">Добавить новый контакт</h2>
+
+                    <label for="name">Имя</label>
+                    <input type="text" name="name" class="name" v-model="modelContact.name">
+
+                    <label for="secondName">Фамилия</label>
+                    <input type="text" name="secondName" class="secondName" v-model="modelContact.secondName">
+
+                    <label for="eMail">e-mail</label>
+                    <input type="text" name="eMail" class="eMail" v-model="modelContact.eMail">
+
+                    <label for="avatar">Ссылка на аватарку</label>
+                    <input type="text" name="avatar" class="avatar" v-model="modelContact.avatar">
+
+                    <button @click="addUser">Добавить</button>
+                    <div class="user_result"></div>
                 </div>
             </div>
         </div>
     </div>
 
 
-
+    <ul>
+        <li v-for="item in product" :key="item.id">{{item.name}} Цена: {{item.price}}</li>
+        {{this.sortMax}}
+    </ul>
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
@@ -77,6 +108,15 @@
             data: {
                 pageTitle: 'Урок 4. Семинар: Методы и работа с контентом',
                 discount: 0,
+                sortArr: [],
+                select: '',
+                modelContact: {
+                    idUsr: '',
+                    name: '',
+                    secondName: '',
+                    eMail: '',
+                    avatar: ''
+                },
                 product: [
                     {
                         name: 'Телевизор',
@@ -129,45 +169,174 @@
                 ],
                 contacts: [
                     {
-                        id: 0,
+                        idUsr: 0,
                         name: "Viktor",
                         secondName: "Ivanov",
                         eMail: "ivanov@mail.ru",
+                        avatar: 'https://pikuco.ru/upload/test_stable/c42/c4238640f6ea4233a1b5085f9ef70218.webp'
                     },
                     {
                         id: 1,
                         name: "Petr",
                         secondName: "Voronov",
                         eMail: "vor@mail.ru",
+                        avatar: 'https://pikuco.ru/upload/test_stable/003/0033063ea5ed1c233831eb1b4d8cf33b.webp'
                     },
                     {
                         id: 2,
                         name: "Sveta",
                         secondName: "Gorbunova",
                         eMail: "svetka@mail.ru",
+                        avatar: 'https://pikuco.ru/upload/test_stable/c42/c4238640f6ea4233a1b5085f9ef70218.webp'
                     },
                 ],
             },
             methods: {
+                addUser() {
+                    const name = document.querySelector('.name');
+                    const secondName = document.querySelector('.secondName');
+                    const eMail = document.querySelector('.eMail');
+                    const avatar = document.querySelector('.avatar');
+                    const user_result = document.querySelector('.user_result');
+                    const err1 = 'Нужно заполнить все поля';
+                    const ok = 'Все хорошо'
+                    const validate = [
+                        {
+                            name: false,
+                            name2: false,
+                            email: false,
+                            avatar: false
+                        }
+                    ]
+
+                    if (this.modelContact.name === '') {
+                        name.classList.remove('success');
+                        name.classList.add('error');
+                        user_result.innerHTML = '';
+                        user_result.innerHTML = err1;
+                        validate.name = false;
+                    } else {
+                        name.classList.remove('error');
+                        name.classList.add('success')
+                        user_result.innerHTML = '';
+                        user_result.innerHTML = ok;
+                        validate.name = true;
+                    }
+
+
+
+                    if (this.modelContact.secondName === '') {
+                        secondName.classList.remove('success');
+                        secondName.classList.add('error');
+                        user_result.innerHTML = '';
+                        user_result.innerHTML = err1;
+                        validate.name2 = false;
+                    } else {
+                        secondName.classList.remove('error');
+                        secondName.classList.add('success')
+                        user_result.innerHTML = '';
+                        user_result.innerHTML = ok;
+                        validate.name2 = true;
+                    }
+
+
+
+
+                    if (this.modelContact.eMail === '') {
+                        eMail.classList.remove('success');
+                        eMail.classList.add('error');
+                        user_result.innerHTML = '';
+                        user_result.innerHTML = err1;
+                        validate.email = false;
+                    } else {
+                        eMail.classList.remove('error');
+                        eMail.classList.add('success')
+                        user_result.innerHTML = '';
+                        user_result.innerHTML = ok;
+                        validate.email = true;
+                    }
+
+
+
+                    if (this.modelContact.avatar === '') {
+                        avatar.classList.remove('success');
+                        avatar.classList.add('error');
+                        user_result.innerHTML = '';
+                        user_result.innerHTML = err1;
+                        validate.email = false;
+                    } else {
+                        avatar.classList.remove('error');
+                        avatar.classList.add('success')
+                        user_result.innerHTML = '';
+                        user_result.innerHTML = ok;
+                        validate.email = true;
+                    }
+
+                    console.log(validate);
+
+                    if (validate.name && validate.name2 && validate.email) {
+                        this.contacts.push({
+                            idUsr: this.contacts.lenght + 1,
+                            ...this.modelContact
+                        });
+
+                        name.value = '';
+                        secondName.value = '';
+                        eMail.value = '';
+                        avatar.value = '';
+
+                        this.modelContact.name = '';
+                        this.modelContact.secondName = '';
+                        this.modelContact.eMail = '';
+                        this.modelContact.avatar = '';
+
+                        for (let i = 0; i < validate.length; i++) {
+                            validate[i] = false
+                        }
+
+                        user_result.innerHTML = ''
+                        name.classList.remove('success');
+                        secondName.classList.remove('success');
+                        eMail.classList.remove('success');
+                        avatar.classList.remove('success');
+                    }
+
+                },
                 getDiscount() {
                     this.discount = Math.floor(Math.random() * 20)
                     console.log(this.discount);
+                },
+                sortArray() {
+                    if (this.select === 'min') {
+                        console.log('Сортировка на уменьшение');
+                    } else if (this.select === 'max') {
+                        console.log('Сортировка на увеличение');
+                    } else {
+                        console.log('Сортировка по умолчанию');
+                    }
                 }
             },
+
             computed: {
                 priceWithDiscount() {
                     return (
                         this.product.price - (this.product.price * this.discount) / 100
                     );
                 },
-                // getDate(){
-                //     let fullDate = this.date;
-                //     let year = fullDate.getFullYear();
-                //     let monthName =fullDate.toLocaleString('default', { month: 'long' });
-                //     let day = fullDate.getDay();
-                //     let res = `Добавлено ${day} ${monthName} ${year}`;
-                //     return(res);
-                // }
+                sortMax() {
+                    let resultArray;
+
+                    if (this.select === '') {
+                        return this.product;
+                    } else if (this.select === 'max') {
+                        resultArray = this.product.sort(function (a, b) {
+                            if (+a.price > +b.price) {
+                                return -1;
+                            }
+                        })
+                    }
+                    return resultArray
+                }
             }
         })
 
