@@ -67,7 +67,7 @@
             </div>
 
             <div class="result">
-                <div class="result__item" v-for="item in contacts" :key="item.id">
+                <div class="result__item" v-for="item in contacts" :key="item.idUsr">
                     <h2>{{item.name}} {{item.secondName}} ID: {{item.idUsr}}</h2>
                     <img :src="item.avatar" :alt="item.name" :title="item.name">
                     <p>{{item.eMail}}</p>
@@ -111,7 +111,7 @@
                 sortArr: [],
                 select: '',
                 modelContact: {
-                    idUsr: '',
+                    id: '',
                     name: '',
                     secondName: '',
                     eMail: '',
@@ -176,14 +176,14 @@
                         avatar: 'https://pikuco.ru/upload/test_stable/c42/c4238640f6ea4233a1b5085f9ef70218.webp'
                     },
                     {
-                        id: 1,
+                        idUsr: 1,
                         name: "Petr",
                         secondName: "Voronov",
                         eMail: "vor@mail.ru",
                         avatar: 'https://pikuco.ru/upload/test_stable/003/0033063ea5ed1c233831eb1b4d8cf33b.webp'
                     },
                     {
-                        id: 2,
+                        idUsr: 2,
                         name: "Sveta",
                         secondName: "Gorbunova",
                         eMail: "svetka@mail.ru",
@@ -199,7 +199,7 @@
                     const avatar = document.querySelector('.avatar');
                     const user_result = document.querySelector('.user_result');
                     const err1 = 'Нужно заполнить все поля';
-                    const ok = 'Все хорошо'
+                    const ok = 'Все хорошо';
                     const validate = [
                         {
                             name: false,
@@ -207,7 +207,9 @@
                             email: false,
                             avatar: false
                         }
-                    ]
+                    ];
+                    const lenghtContacts = this.contacts.lenght;
+                    this.modelContact.id = lenghtContacts;
 
                     if (this.modelContact.name === '') {
                         name.classList.remove('success');
@@ -276,9 +278,10 @@
 
                     if (validate.name && validate.name2 && validate.email) {
                         this.contacts.push({
-                            idUsr: this.contacts.lenght + 1,
                             ...this.modelContact
                         });
+
+
 
                         name.value = '';
                         secondName.value = '';
