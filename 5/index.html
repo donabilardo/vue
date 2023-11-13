@@ -5,12 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div id="app">
+        <div class="container">
+            <div class="panel">
+                <h1>Каталог товаров</h1>
+            </div>
+            <div class="filter_panel">
+                <label for="filter">Сортировать товары: </label>
+                <select name="filter" id="filter" @change="sortArray" v-model="select">
+                    <option value="default" selected>Сортировка по цене</option>
+                    <option value="min">Сначала дешевые</option>
+                    <option value="max">Сначала дорогие</option>
+                </select>
+                <input type="text" placeholder="Поиск товаров" v-on:input="searchProduct" v-model="search">
 
+            </div>
+            <div class="result">
+                <div class="result__item" v-for="item in sortMax" :key="item.id">
+                    <h2>{{item.name}}</h2>
+                    <img :src="item.img" :alt="item.name">
+                    <div class="price">Стоимость: <b>{{item.price}}</b></div>
+                    <div>{{(item.date).getFullYear()}}</div><br>
+                    <button @click="getDiscount" id="discButton">Получить скидку</button>
+                    <div>Цена со скидкой: {{item.price - (item.price * discount)/100}}</div>
+                    <!-- Добавьте кнопку, которая будет изменять цену товара. 
+                    При нажатии на кнопку должна генерироваться скидка на товар от 1 до 20%
+                     и обновиться цена товара в соответствии с значением скидки -->
+                    <div class="card">
+                        <input type="number" name="qnt" id="qnt" v-model.number="item.qnt" class="qnt">
+                        <label for="qnt">Количество товара: </label>
+                    </div>
+                    <div class="card">
+                        <input type="checkbox" name="bought" id="bought" v-model="item.bought">
+                        <label for="bought">Товар куплен</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
@@ -18,13 +55,141 @@
         const v = new Vue({
             el: '#app',
             data: {
-                pageTitle: 'Урок 5. Лекция: Компоненты'
+                pageTitle: 'Урок 5. Лекция: Компоненты',
+                select: '',
+                search: '',
+                discount: 0,
+                product: [
+                    {
+                        id: 1,
+                        name: 'Телевизор',
+                        price: 125,
+                        img: 'https://static.nix.ru/images/sony-kd-50x81jr-5418432254.jpeg?good_id=541843&width=500&height=500&view_id=2254',
+                        date: new Date(Date.UTC(2017, 1, 2)),
+                        qnt: 10,
+                        bought: false
+                    },
+                    {
+                        id: 2,
+                        name: 'Клавиатура',
+                        price: 15,
+                        img: 'https://img.mvideo.ru/Pdb/50174469b.jpg',
+                        date: new Date(Date.UTC(2018, 11, 12)),
+                        qnt: 12,
+                        bought: false
+                    },
+                    {
+                        id: 3,
+                        name: 'Планшет',
+                        price: 111,
+                        img: 'https://ae04.alicdn.com/kf/S67194140cfdc4a9ca55d77be07b69524V.jpg_640x640.jpg',
+                        date: new Date(Date.UTC(2015, 1, 1)),
+                        qnt: 12,
+                        bought: false
+                    },
+                    {
+                        id: 4,
+                        name: 'Телефон',
+                        price: 76,
+                        img: 'https://img.mvideo.ru/Pdb/30041492b.jpg',
+                        date: new Date(Date.UTC(2019, 12, 11)),
+                        qnt: 5,
+                        bought: false
+                    },
+                    {
+                        id: 5,
+                        name: 'Зарядка',
+                        price: 6,
+                        img: 'https://avatars.dzeninfra.ru/get-zen_doc/128694/pub_5d999bc08600e100ad72d117_5d999eb9ec575b00b0154545/scale_1200',
+                        date: new Date(Date.UTC(2022, 4, 5)),
+                        qnt: 9,
+                        bought: false
+                    },
+                    {
+                        id: 6,
+                        name: 'Планшет',
+                        price: 23,
+                        img: 'https://vl.shop.megafon.ru/images/goods/1180/118043_p_8_7.jpg',
+                        date: new Date(Date.UTC(2013, 7, 8)),
+                        qnt: 36,
+                        bought: false
+                    },
+                    {
+                        id: 7,
+                        name: 'Мышь',
+                        price: 12,
+                        img: 'https://www.adverti.ru/media/catalog/product/1/0/102106.jpg',
+                        date: new Date(Date.UTC(2023, 9, 5)),
+                        qnt: 120,
+                        bought: false
+                    },
+                ],
             },
             methods: {
-
+                searchProduct() {
+                    console.log(this.search);
+                },
+                getDiscount() {
+                    this.discount = Math.floor(Math.random() * 20)
+                    console.log(this.discount);
+                },
+                sortArray() {
+                    if (this.select === 'min') {
+                        console.log('Сортировка на уменьшение');
+                    } else if (this.select === 'max') {
+                        console.log('Сортировка на увеличение');
+                    } else {
+                        console.log('Сортировка по умолчанию');
+                    }
+                }
             },
             computed: {
+                sortMax() {
+                    let resultArray = [...this.product];
 
+                    if (this.select === '') {
+                        if (this.search != '') {
+                            resultArray = resultArray.filter(elem => {
+                                if (elem.name === this.search) {
+                                    return true
+                                }
+                            })
+                        } else {
+                            return resultArray
+                        }
+                    } else if (this.select === 'max') {
+                        resultArray.sort(function (a, b) {
+                            if (a.price > b.price) {
+                                return -1
+                            }
+                        })
+                        if (this.search != '') {
+                            resultArray = resultArray.filter(elem => {
+                                if (elem.name === this.search) {
+                                    return true
+                                }
+                            })
+                        } else {
+                            return resultArray
+                        }
+                    } else if (this.select === 'min') {
+                        resultArray.sort(function (a, b) {
+                            if (a.price < b.price) {
+                                return -1
+                            }
+                        })
+                        if (this.search != '') {
+                            resultArray = resultArray.filter(elem => {
+                                if (elem.name === this.search) {
+                                    return true
+                                }
+                            })
+                        } else {
+                            return resultArray
+                        }
+                    }
+                    return resultArray
+                }
             }
         })
 
