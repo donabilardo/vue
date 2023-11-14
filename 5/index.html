@@ -22,7 +22,7 @@
                     <option value="min">Сначала дешевые</option>
                     <option value="max">Сначала дорогие</option>
                 </select>
-                <input type="text" placeholder="Поиск товаров" v-on:input="searchProduct" v-model="search">
+                <input type="text" placeholder="Поиск товаров" v-on:input="searchProduct" v-model="search" @focus="clearSearch">
 
             </div>
             <div class="result">
@@ -133,6 +133,10 @@
                 ],
             },
             methods: {
+                clearSearch(){
+                    this.search = '';
+                    console.log('onfocus');
+                },
                 searchProduct() {
                     console.log(this.search);
                 },
