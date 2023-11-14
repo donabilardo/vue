@@ -157,7 +157,10 @@
                     if (this.select === '') {
                         if (this.search != '') {
                             resultArray = resultArray.filter(elem => {
-                                if (elem.name === this.search) {
+                                // if (elem.name === this.search) {
+                                //     return true
+                                // }
+                                if ((elem.name.toLowerCase()).includes((this.search).toLowerCase())) {
                                     return true
                                 }
                             })
@@ -172,7 +175,7 @@
                         })
                         if (this.search != '') {
                             resultArray = resultArray.filter(elem => {
-                                if (elem.name === this.search) {
+                                if ((elem.name.toLowerCase()).includes((this.search).toLowerCase())) {
                                     return true
                                 }
                             })
@@ -187,7 +190,7 @@
                         })
                         if (this.search != '') {
                             resultArray = resultArray.filter(elem => {
-                                if (elem.name === this.search) {
+                                if ((elem.name.toLowerCase()).includes((this.search).toLowerCase())) {
                                     return true
                                 }
                             })
