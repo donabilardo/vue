@@ -22,12 +22,13 @@
                     <option value="min">Сначала дешевые</option>
                     <option value="max">Сначала дорогие</option>
                 </select>
-                <input type="text" placeholder="Поиск товаров" v-on:input="searchProduct" v-model="search" @focus="clearSearch">
+                <input type="text" placeholder="Поиск товаров" v-on:input="searchProduct" v-model="search"
+                    @focus="clearSearch">
 
             </div>
             <div class="result">
                 <div class="result__item" v-for="item in sortMax" :key="item.id">
-                    <h2>{{item.name}}</h2>
+                    <h2 v-text="item.name"></h2>
                     <img :src="item.img" :alt="item.name">
                     <div class="price">Стоимость: <b>{{item.price}}</b></div>
                     <div>{{(item.date).getFullYear()}}</div><br>
@@ -53,14 +54,21 @@
             <div class="panel">
                 <h1>Вывод data в JSON формате</h1>
             </div>
-            <pre>{{ $data | json}}</pre>
+            <pre>{{ $data | getJSON(this.product)}}</pre>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
     <script>
         const v = new Vue({
+
             el: '#app',
+            filters: {
+                getJSON: function (obj) {
+                    let r = JSON.stringify(obj, null, 2);
+                    return r
+                },
+            },
             data: {
                 pageTitle: 'Урок 5. Лекция: Компоненты',
                 select: '',
@@ -133,7 +141,7 @@
                 ],
             },
             methods: {
-                clearSearch(){
+                clearSearch() {
                     this.search = '';
                     console.log('onfocus');
                 },
