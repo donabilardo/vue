@@ -24,7 +24,19 @@
                 </select>
                 <input type="text" placeholder="Поиск товаров" v-on:input="searchProduct" v-model="search"
                     @focus="clearSearch">
+                <span>Сортировать цены: &nbsp;</span>
+                <label for="minPrice">от: </label>
+                <select name="minPrice" id="minPrice" v-model="minPriceModel">
+                    <option v-for="item in minPriceList" :key="item.id" :value="item.price">
+                        {{ item.price }}</option>
+                </select>
 
+                <label for="maxPrice1">от: </label>
+                <select name="maxPrice1" id="maxPrice1" v-model="maxPriceModel">
+                    <option v-for="item in minPriceList" :key="item.id" :value="item.price">
+                        {{ item.price }}</option>
+                </select>
+                
             </div>
             <div class="result">
                 <div class="result__item" v-for="item in sortMax" :key="item.id">
@@ -71,6 +83,8 @@
             },
             data: {
                 pageTitle: 'Урок 5. Лекция: Компоненты',
+                maxPriceModel: '',
+                minPriceModel: '',
                 select: '',
                 search: '',
                 discount: 0,
@@ -211,6 +225,20 @@
                         }
                     }
                     return resultArray
+                },
+                minPriceList() {
+                    return this.product.sort(function (a, b) {
+                        if (a.price < b.price) {
+                            return -1
+                        }
+                    })
+                },
+                maxPriceList() {
+                    return this.product.sort(function (a, b) {
+                        if (a.price > b.price) {
+                            return -1
+                        }
+                    })
                 }
             }
         })
