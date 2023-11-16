@@ -1031,3 +1031,10 @@ h3 {
   background-color: grey;
   color: white;
 }
+
+.header {
+  height: 351px;
+  background-image: url("../img/item_article/banner.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
