@@ -1,4 +1,4 @@
-new Vue({
+const v = new Vue({
     el: '#app',
     data: {
         logoImg: 'img/logo.svg',
@@ -7,6 +7,7 @@ new Vue({
         address: '55 East Birchwood Ave. Brooklyn, New York 11201',
         telephon: '(123) 456 - 7890',
         email: 'contact@interno.com',
+        tags: [],
         navbar: [
             {
                 name: 'Home',
@@ -71,6 +72,7 @@ new Vue({
         ],
         article: [
             {
+                id: 1,
                 name: 'let`s get solution for building construction work',
                 category: 'Kitchan design',
                 date: '2017-02-06',
@@ -79,6 +81,7 @@ new Vue({
                 text: ''
             },
             {
+                id: 2,
                 name: 'Low cost latest invented interior designing ideas.',
                 category: 'Living design',
                 date: '2017-03-16',
@@ -87,6 +90,7 @@ new Vue({
                 text: ''
             },
             {
+                id: 3,
                 name: 'Best for any office & business interior solution',
                 category: 'Interior design',
                 date: '2019-08-01',
@@ -95,6 +99,7 @@ new Vue({
                 text: ''
             },
             {
+                id: 4,
                 name: 'let`s get solution for building construction work',
                 category: 'Kitchan design',
                 date: '2017-12-12',
@@ -103,6 +108,7 @@ new Vue({
                 text: ''
             },
             {
+                id: 5,
                 name: 'Low cost latest invented interior designing ideas.',
                 category: 'Living design',
                 date: '2023-04-07',
@@ -111,6 +117,7 @@ new Vue({
                 text: ''
             },
             {
+                id: 6,
                 name: 'Best for any office & business interior solution',
                 category: 'Interior design',
                 date: '2022-02-06',
@@ -119,12 +126,13 @@ new Vue({
                 text: ''
             },
             {
+                id: 7,
                 name: 'low cost latest invented interior designing ideas',
                 category: 'Kitchan design',
                 date: '2017-09-076',
                 img: 'img/article_news/7.png',
                 imgR: 'img/article_news/7-r.png',
-                text: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.' + '\n' +'Lorem Ipsum is not simply random text. It has roots in a piece of classica.'
+                text: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.' + '\n' + 'Lorem Ipsum is not simply random text. It has roots in a piece of classica.'
             },
         ]
     },
@@ -132,6 +140,13 @@ new Vue({
 
     },
     computed: {
+        getTags() {
+            let result = this.article.map(elem => {
+                this.tags.push(elem.category)
+            });
+            return new Set(this.tags);
 
+
+        }
     }
 })

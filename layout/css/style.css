@@ -1170,6 +1170,39 @@ ol ::marker {
   width: 345px;
 }
 
+.asside__tags {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.asside__tags-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  background: #292F36;
+  color: #FFF;
+  text-align: center;
+  font-family: Jost;
+  font-size: 18px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.asside__tags-item:hover {
+  cursor: pointer;
+}
+
 .aside {
   width: 345px;
 }

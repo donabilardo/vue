@@ -79,6 +79,9 @@
                 </main>
                 <aside class="aside">
                     <h3>Tags</h3>
+                    <div class="asside__tags">
+                        <div class="asside__tags-item" v-for="item in getTags" :key="item.id">{{item}}</div>
+                    </div>
                 </aside>
             </div>
         </div>
