@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container">
+            <div class="panel">
+                <h1>Компонент счетчика</h1>
+                <div class="desc">
+                    Создайте компонент счетчика, который имеет кнопку "+" и кнопку "-",
+                    и отображает текущее значение счетчика.
+                    При нажатии на кнопки счетчик должен увеличиваться или уменьшаться соответственно.
+                </div>
+            </div>
+
+            <div class="result">
+                <counter></counter>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script>
+
+        Vue.component('counter', {
+            template: `
+                <div class="counter__box">
+                    <p>Результат: <span>{{counter}}</span></p>
+                    <button @click="counter++">Прибавить к результату 1</button>
+                    <button @click="counter--">Отнять от результата 1</button>   
+                </div>   
+            `,
+            data() {
+                return {
+                    counter: 0
+                }
+            }
+        });
+
+
+        const v = new Vue({
+
+            el: '#app',
+            filters: {
+            },
+            data: {
+                pageTitle: 'Урок 6. Семинар: Компоненты',
+            },
+            methods: {
+
+            },
+            computed: {
+
+            }
+
+        });
+
+        document.title = v.pageTitle;
+
+
+    </script>
+</body>
+
+</html>
