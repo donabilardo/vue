@@ -29,20 +29,38 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js" defer></script>
     <script>
 
         Vue.component('counter', {
             template: `
                 <div class="counter__box">
-                    <p>Результат: <span>{{counter}}</span></p>
-                    <button @click="counter++">Прибавить к результату 1</button>
-                    <button @click="counter--">Отнять от результата 1</button>   
+                    <p>Результат: <span>{{resultOperation}}</span></p>
+                    <button @click="counterPlus">Прибавить к результату 1</button>
+                    <button @click="counterMinus">Отнять от результата 1</button>   
                 </div>   
             `,
             data() {
                 return {
-                    counter: 0
+                    counter: 0,
+                    val: 0
+                }
+            },
+            methods: {
+                counterPlus() {
+                    this.val = 'plus'
+                    this.counter++
+                    console.log(this.val);
+                },
+                counterMinus() {
+                    this.val = 'minus'
+                    this.counter--
+                    console.log(this.val);
+                }
+            },
+            computed: {
+                resultOperation() {
+                    return this.counter
                 }
             }
         });
