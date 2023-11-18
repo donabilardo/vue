@@ -8,6 +8,8 @@ const v = new Vue({
         telephon: '(123) 456 - 7890',
         email: 'contact@interno.com',
         tags: [],
+        tagsClick: 'all',
+        articleList: [],
         navbar: [
             {
                 name: 'Home',
@@ -78,7 +80,7 @@ const v = new Vue({
                 date: '2017-02-06',
                 img: 'img/article_news/1.png',
                 imgR: 'img/article_news/1-r.png',
-                text: ''
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
                 id: 2,
@@ -87,7 +89,7 @@ const v = new Vue({
                 date: '2017-03-16',
                 img: 'img/article_news/2.png',
                 imgR: 'img/article_news/2-r.png',
-                text: ''
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
                 id: 3,
@@ -96,7 +98,7 @@ const v = new Vue({
                 date: '2019-08-01',
                 img: 'img/article_news/3.png',
                 imgR: 'img/article_news/3-r.png',
-                text: ''
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
                 id: 4,
@@ -105,7 +107,7 @@ const v = new Vue({
                 date: '2017-12-12',
                 img: 'img/article_news/4.png',
                 imgR: 'img/article_news/4-r.png',
-                text: ''
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
                 id: 5,
@@ -114,7 +116,7 @@ const v = new Vue({
                 date: '2023-04-07',
                 img: 'img/article_news/5.png',
                 imgR: 'img/article_news/5-r.png',
-                text: ''
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
                 id: 6,
@@ -123,7 +125,7 @@ const v = new Vue({
                 date: '2022-02-06',
                 img: 'img/article_news/6.png',
                 imgR: 'img/article_news/6-r.png',
-                text: ''
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
                 id: 7,
@@ -137,16 +139,57 @@ const v = new Vue({
         ]
     },
     methods: {
-
+        listArticleByTags(item) {
+            this.articleList = [];
+            this.tagsClick = item;
+            console.log(this.articleList);
+            console.log(this.tagsClick);
+        },
+        listAllArticle() {
+            this.articleList = [];
+            this.tagsClick = 'all';
+        }
     },
     computed: {
         getTags() {
-            let result = this.article.map(elem => {
+            this.article.map(elem => {
                 this.tags.push(elem.category)
             });
-            return new Set(this.tags);
+            this.tags = new Set(this.tags);
+            return this.tags;
+        },
+        getAllArticleByTag() {
+            // this.article.forEach(element => {
+            //     if (element.category === this.tagsClick) {
+            //         this.articleList.push(element)
+            //     }
+            // });
+            // return this.articleList
 
+            // if (this.tagsClick === 'all') {
+            //     return (this.article).slice(0, 5)
+            // } else {
+            //     this.article.forEach(element => {
+            //         if (element.category === this.tagsClick) {
+            //             this.articleList.push(element);
+            //             return this.articleList;
+            //         }
+            //     });
+            // }
 
+            if (this.tagsClick != 'all') {
+                this.article.forEach(article => {
+                    if (article.category === this.tagsClick) {
+                        this.articleList.push(article)
+                    }
+                });
+            } else {
+                this.article.forEach(article => {
+                    this.articleList.push(article)
+                })
+            }
+            return this.articleList
         }
+
     }
 })
