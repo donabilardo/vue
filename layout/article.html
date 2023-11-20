@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GB - VUE.js</title>
+    <link rel="stylesheet" href="css/item_article.min.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="container">
+            <div class="navbar">
+
+                <div class="nav__logo">
+                    <a href="#" class="nav__logo-link" :title="siteName">
+                        <img :src="logoImg" :alt="siteName" class="nav__logo-img">
+                        <span>Interno</span>
+                    </a>
+                </div>
+
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__list-item" v-for="item in navbar" :key="item.id">
+                            <a :href="item.link" class="nav__list-link" :title="item.name">{{item.name}}</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+
+        <header class="header">
+        </header>
+
+        <div class="container">
+            <div class="content">
+                <main class="main">
+                    <h1>Let’s Get Solution for Building Construction Work</h1>
+                    <img src="img/item_article/1.jpg" srcset="img/item_article/1-r.jpg" alt="ALT BLA BLA">
+
+                    <div class="main__date">
+                        <div class="main__date-left">26 December,2022</div>
+                        <div class="main__date-right">Interior / Home / Decore</div>
+                    </div>
+
+                    <p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to
+                        popular belief.There are many variations of passages of Lorem Ipsum available, but the majority
+                        have suffered alteration in some form, by injecthumour, or randomised words which don't look
+                        even slightly believable.</p>
+                    <p>Embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                        repeat predefined chunks as necessary.</p>
+
+                    <div class="main__block">
+                        <div class="block__content">
+                            <div class="block__content-1">“</div>
+                            <div class="block__content-2">The details are not the details. They make the design.</div>
+                        </div>
+                    </div>
+                    <h1>Design sprints are great</h1>
+                    <p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to
+                        popular belief.There are many variations of passages of Lorem Ipsum available, but the majority
+                        have suffered.</p>
+                    <ol>
+                        <li>Contrary to popular belief.There are many variations of passages of Lorem Ipsum available,
+                            but the majority have suffered.</li>
+                        <li>Contrary to popular belief.There are many variations of passages of Lorem Ipsum available,
+                            but the majority have suffered.</li>
+                        <li>Contrary to popular belief.There are many variations of passages of Lorem Ipsum available,
+                            but the majority have suffered.</li>
+                    </ol>
+                    <img src="img/item_article/2.jpg" srcset="img/item_article/2-r.jpg" alt="ALT BLA BLA">
+                    <p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to
+                        popular belief.There are many variations of passages of Lorem Ipsum available, but the majority
+                        have suffered.</p>
+                </main>
+                <aside class="aside">
+                    <h3>Tags</h3>
+                    <div class="asside__tags">
+                        <div class="asside__tags-item" @click="listAllArticle">All tags</div>
+                        <div class="asside__tags-item" v-for="item in getTags" :key="item.id"
+                            @click="listArticleByTags(item)">{{item}}</div>
+                    </div>
+                    <div class="asside__item" v-for="item in getAllArticleByTag.slice(0,5)" :key="item.id">
+                        <a href="#">
+                            <div class="asside__box">
+                                <div class="asside__box-tag">{{item.category}}</div>
+                                <img :src="item.img" :alt="item.name" class="asside__item-img">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <h3 class="asside__item-title">{{item.name}}</h3>
+                        </a>
+                        <p class="asside__item-text">{{item.text}}</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        
+        <div class="container">
+            <footer class="footer">
+                <div class="footer_left">
+                    <div class="nav__logo">
+                        <a href="#" class="nav__logo-link" :title="siteName">
+                            <img :src="logoImg" :alt="siteName" class="nav__logo-img">
+                            <span>Interno</span>
+                        </a>
+                    </div>
+                    <p class="footer__left-text">{{ siteSlogan }}</p>
+                    <div class="social">
+                        <img src="img/social/twitter.svg" alt="twitter">
+                        <img src="img/social/in.svg" alt="In XZ">
+                    </div>
+                </div>
+                <div class="footer_center">
+                    <h3>Pages</h3>
+                    <ul class="footer__center-list">
+                        <li class="footer_list-item" v-for="item in navbar" :key="item.id">
+                            <a :href="item.name" class="footer__item-link" :title="item.name">{{ item.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <address class="footer_right">
+                    <h3>Contact</h3>
+                    <p>{{ address }}</p>
+                    <p>{{ email }}</p>
+                    <p>{{ telephon }}</p>
+                </address>
+            </footer>
+        </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

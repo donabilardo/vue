@@ -1,0 +1,49 @@
+.aside{
+    width: 345px;
+}
+
+.asside__item {
+}
+.asside__item-img {
+    max-width: 280px;
+    border-radius: 30px;
+}
+.asside__item-title {
+    max-width: 280px;
+    font-size: 20px;
+}
+.asside__item-text {
+    max-width: 280px;
+    font-family: 'Jost';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: .22px;
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+
+.asside__box{
+    position: relative;
+}
+.asside__box-tag{
+    position: absolute;
+    display: flex;
+    padding: 5px 10px;
+    justify-content: center;
+    align-items: center;
+
+    background: #292F36;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Jost';
+    font-size: 16px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    bottom: 0px;
+    right: 50%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
