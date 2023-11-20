@@ -1,0 +1,148 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 96px;
+}
+
+.main {
+    width: 800px;
+
+    h1 {
+        line-height: 125%;
+        /* 62.5px */
+        letter-spacing: 1px;
+        margin-bottom: 25px;
+    }
+
+    img {
+        width: 799px;
+        height: 539px;
+        border-radius: 50px;
+        margin-bottom: 40px;
+    }
+}
+
+.main__date {
+    display: flex;
+    justify-content: space-between;
+    font-family: Jost;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 24px */
+    letter-spacing: 0.16px;
+    text-transform: capitalize;
+    margin-bottom: 45px;
+}
+
+p {
+    color: #4D5053;
+
+    font-family: Jost;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 33px */
+    letter-spacing: 0.22px;
+    text-align: justify;
+    margin-bottom: 35px;
+}
+
+.main__date-left {}
+
+.main__date-right {}
+
+.main__block {
+    display: flex;
+    justify-content: center;
+    height: 267px;
+    padding: 53px 200px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50px;
+    background: #F4F0EC;
+    //position: relative;
+    text-align: center;
+    margin-bottom: 27px;
+}
+
+.block__content-1 {
+    color: #CDA274;
+    text-align: center;
+    font-family: 'DM', Serif;
+    font-size: 200px;
+    font-style: italic;
+    font-weight: 400;
+    /* 250px */
+    letter-spacing: 4px;
+    // position: absolute;
+}
+
+.block__content-2 {
+    color: #CDA274;
+    text-align: center;
+    font-family: 'DM', Serif;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 125%;
+    /* 31.25px */
+    letter-spacing: 0.5px;
+    //position: absolute;
+}
+
+ol {
+
+    color: #4D5053;
+    font-family: Jost;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 33px */
+    letter-spacing: 0.22px;
+
+    li {
+        padding-bottom: 32px;
+
+        &:last-child {
+            padding-bottom: 45px;
+        }
+    }
+
+    ::marker {
+        color: $text_accent;
+    }
+}
+
+.aside {
+    width: 345px;
+}
+
+.asside__tags {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.asside__tags-item {
+    display: flex;
+    padding: 5px 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: #292F36;
+    color: #FFF;
+    text-align: center;
+    font-family: Jost;
+    font-size: 18px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
