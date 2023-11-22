@@ -9,7 +9,7 @@
     color: aliceblue;
     text-align: center;
     padding: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .result {
@@ -18,6 +18,8 @@
     justify-content: space-between;
     gap: 20px;
     padding: 10px;
+    margin-bottom: 120px;
+    border: 1px solid black;
 }
 
 .result__item {
@@ -70,4 +72,26 @@ select {
     background-color: ghostwhite;
     color: black;
     padding: 15px;
+}
+
+.todo__box{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.todo__box-item{
+    border: 1px solid rgb(11, 70, 7);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.todo__box-del{
+    font-size: 40px;
+    font-weight: 900;
+    color: red;
+    font-style: normal;
+}
+.material-symbols-outlined:hover{
+    cursor: pointer;
 }
