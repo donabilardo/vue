@@ -95,3 +95,13 @@ select {
 .material-symbols-outlined:hover{
     cursor: pointer;
 }
+.list__box{
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+.list__result{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

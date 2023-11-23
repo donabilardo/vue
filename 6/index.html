@@ -39,6 +39,21 @@
             <div class="result">
                 <todo></todo>
             </div>
+
+            <div class="panel">
+                <h1>Компонент списка</h1>
+                <div class="desc">
+                    Создайте компонент списка, который отображает массив элементов.
+                    Добавьте текстовое поле для фильтрации списка.
+                    При вводе текста в поле, список должен автоматически обновляться,
+                    отображая только элементы, содержащие введенный текст.
+                </div>
+            </div>
+
+            <div class="result">
+                <list></list>
+            </div>
+
         </div>
     </div>
 
@@ -46,6 +61,65 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
     <script>
+
+        Vue.component('list', {
+            template: `
+<div class="list__box">
+    <div class="todo__box">
+                <h2 style="text-aligh: center">Фильтрация списка</h2>
+                <input class="add__todo" placeholder="Добавить элемент" v-model="addListModel">
+                
+                <button @click="addNewItem">Добавить элемент</button>
+                    <div class="todo__box-item" v-for="(item, index) in ListAll" :key="index">
+                        <div>{{item}}</div>
+                        <div class="todo__box-del">
+                            <span class="material-symbols-outlined" @click="DeleteListElement(index)">close</span>
+                        </div>
+                    </div>   
+     </div>
+     <div class="list__result">
+        
+        <h2 style="text-aligh: center">Результат фильтрации</h2>
+        <input class="add__todo" placeholder="Фильтровать по..." v-model="filterModel">
+        <ul>
+            <li v-for="(item, index) in filerList" :key="index">{{item}}</li>
+        </ul>
+    </div> 
+</div>
+
+            `,
+            data() {
+                return {
+                    ListAll: ['list 1', 'list 2', 'list 3'],
+                    addListModel: '',
+                    filterModel: '',
+                }
+            },
+            methods: {
+                addNewItem() {
+                    this.ListAll.push(this.addListModel)
+                    this.addListModel = ''
+                },
+                DeleteListElement(index) {
+                    this.ListAll.splice(index, 1)
+                    this.addListModel = ''
+                }
+            },
+            computed: {
+                filerList() {
+                    if (this.filterModel) {
+                        return this.ListAll.filter((item) => item.includes(this.filterModel))
+                    } else {
+                        return this.ListAll
+                    }
+                }
+
+            },
+            filters: {
+
+            }
+        });
+
         Vue.component('todo', {
             template: `
             <div class="todo__box">
