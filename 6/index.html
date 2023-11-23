@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container">
+            <div class="panel">
+                <h1>Компонент счетчика</h1>
+                <div class="desc">
+                    Создайте компонент счетчика, который имеет кнопку "+" и кнопку "-",
+                    и отображает текущее значение счетчика.
+                    При нажатии на кнопки счетчик должен увеличиваться или уменьшаться соответственно.
+                </div>
+            </div>
+
+            <div class="result">
+                <counter></counter>
+            </div>
+
+            <div class="panel">
+                <h1>Компонент To-Do приложения</h1>
+                <div class="desc">
+                    Создайте компонент списка дел, в котором можно добавлять и удалять элементы.
+                    Каждый элемент списка должен иметь кнопку удаления,
+                    при нажатии на которую элемент списка будет удаляться.
+                </div>
+            </div>
+
+            <div class="result">
+                <todo></todo>
+            </div>
+
+            <div class="panel">
+                <h1>Компонент списка</h1>
+                <div class="desc">
+                    Создайте компонент списка, который отображает массив элементов.
+                    Добавьте текстовое поле для фильтрации списка.
+                    При вводе текста в поле, список должен автоматически обновляться,
+                    отображая только элементы, содержащие введенный текст.
+                </div>
+            </div>
+
+            <div class="result">
+                <list></list>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script>
+
+        Vue.component('list', {
+            template: `
+<div class="list__box">
+    <div class="todo__box">
+                <h2 style="text-aligh: center">Фильтрация списка</h2>
+                <input class="add__todo" placeholder="Добавить элемент" v-model="addListModel">
+                
+                <button @click="addNewItem">Добавить элемент</button>
+                    <div class="todo__box-item" v-for="(item, index) in ListAll" :key="index">
+                        <div>{{item}}</div>
+                        <div class="todo__box-del">
+                            <span class="material-symbols-outlined" @click="DeleteListElement(index)">close</span>
+                        </div>
+                    </div>   
+     </div>
+     <div class="list__result">
+        
+        <h2 style="text-aligh: center">Результат фильтрации</h2>
+        <input class="add__todo" placeholder="Фильтровать по..." v-model="filterModel">
+        <ul>
+            <li v-for="(item, index) in filerList" :key="index">{{item}}</li>
+        </ul>
+    </div> 
+</div>
+
+            `,
+            data() {
+                return {
+                    ListAll: ['list 1', 'list 2', 'list 3'],
+                    addListModel: '',
+                    filterModel: '',
+                }
+            },
+            methods: {
+                addNewItem() {
+                    this.ListAll.push(this.addListModel)
+                    this.addListModel = ''
+                },
+                DeleteListElement(index) {
+                    this.ListAll.splice(index, 1)
+                    this.addListModel = ''
+                }
+            },
+            computed: {
+                filerList() {
+                    if (this.filterModel) {
+                        return this.ListAll.filter((item) => item.includes(this.filterModel))
+                    } else {
+                        return this.ListAll
+                    }
+                }
+
+            },
+            filters: {
+
+            }
+        });
+
+        Vue.component('todo', {
+            template: `
+            <div class="todo__box">
+                <h2 style="text-aligh: center">Список дел:</h2>
+                <input class="add__todo" placeholder="Добавить задачу..." v-model="taskModel" @focus="ClearInput">
+                <button @click="addTask">Добавить</button>
+                    <div class="todo__box-item" v-for="(item, index) in taskAll" :key="index">
+                        <div>{{item}}</div>
+                        <div class="todo__box-del">
+                            <span class="material-symbols-outlined" @click="DeleteTask(index)">close</span>
+                        </div>
+                    </div>   
+            </div>   
+            `,
+            data() {
+                return {
+                    task: ['Первый элемент', 'Второй элемент', 'Третий элемент'],
+                    taskModel: ''
+                }
+            },
+            methods: {
+                addTask() {
+                    this.task.push(this.taskModel);
+                },
+                ClearInput() {
+                    this.taskModel = ''
+                },
+                DeleteTask(index) {
+                    this.task.splice(index, 1)
+                }
+            },
+            computed: {
+                taskAll() {
+                    return this.task
+                }
+            }
+        })
+
+        Vue.component('counter', {
+            template: `
+                <div class="counter__box">
+                    <p>Результат: <span>{{resultOperation}}</span></p>
+                    <button @click="counterPlus">Прибавить к результату 1</button>
+                    <button @click="counterMinus">Отнять от результата 1</button>   
+                </div>   
+            `,
+            data() {
+                return {
+                    counter: 0,
+                    val: 0
+                }
+            },
+            methods: {
+                counterPlus() {
+                    this.val = 'plus'
+                    this.counter++
+                    console.log(this.val);
+                },
+                counterMinus() {
+                    this.val = 'minus'
+                    this.counter--
+                    console.log(this.val);
+                }
+            },
+            computed: {
+                resultOperation() {
+                    return this.counter
+                }
+            }
+        });
+
+
+        const v = new Vue({
+
+            el: '#app',
+            filters: {
+            },
+            data: {
+                pageTitle: 'Урок 6. Семинар: Компоненты',
+            },
+            methods: {
+
+            },
+            computed: {
+
+            }
+
+        });
+
+        document.title = v.pageTitle;
+
+
+    </script>
+</body>
+
+</html>
