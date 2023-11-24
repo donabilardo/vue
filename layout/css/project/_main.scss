@@ -1,0 +1,38 @@
+.main{
+    padding-bottom: 65px;
+}
+
+.paginator {
+    padding-top: 51px;
+    padding-bottom: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.paginator__item {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid $yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #292F36;
+    font-family: 'Jost';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    /* 24px */
+    text-transform: capitalize;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .paginator__item-active {
+        background-color: grey;
+        color: white;
+    }
+}

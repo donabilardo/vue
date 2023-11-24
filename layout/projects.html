@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GB - VUE.js</title>
+    <link rel="stylesheet" href="css/project_all.min.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container">
+            <div class="navbar">
+
+                <div class="nav__logo">
+                    <a href="#" class="nav__logo-link" :title="siteName">
+                        <img :src="logoImg" :alt="siteName" class="nav__logo-img">
+                        <span>Interno</span>
+                    </a>
+                </div>
+
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__list-item" v-for="item in navbar" :key="item.id">
+                            <a :href="item.link" class="nav__list-link" :title="item.name">{{item.name}}</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+
+        <header class="header">
+            <div class="header__box">
+                <h1 class="header__box-title">Our Project</h1>
+                <div class="header__box-breadcrump">Home / Project</div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="tags__box">
+                <div class="tags__box-item">Bathroom</div>
+                <div class="tags__box-item tags__active">Bed Room</div>
+                <div class="tags__box-item">Kitchan</div>
+                <div class="tags__box-item">Living Area</div>
+            </div>
+        </div>
+
+        <main class="main">
+           <div class="container">
+            cdscd
+           </div>
+        </main>
+
+        <div class="paginator">
+            <div class="paginator__item paginator__item-active">01</div>
+            <div class="paginator__item">02</div>
+            <div class="paginator__item">03</div>
+            <div class="paginator__item">></div>
+        </div>
+        <div class="container">
+            <footer class="footer">
+                <div class="footer_left">
+                    <div class="nav__logo">
+                        <a href="#" class="nav__logo-link" :title="siteName">
+                            <img :src="logoImg" :alt="siteName" class="nav__logo-img">
+                            <span>Interno</span>
+                        </a>
+                    </div>
+                    <p class="footer__left-text">{{ siteSlogan }}</p>
+                    <div class="social">
+                        <img src="img/social/twitter.svg" alt="twitter">
+                        <img src="img/social/in.svg" alt="In XZ">
+                    </div>
+                </div>
+                <div class="footer_center">
+                    <h3>Pages</h3>
+                    <ul class="footer__center-list">
+                        <li class="footer_list-item" v-for="item in navbar" :key="item.id">
+                            <a :href="item.name" class="footer__item-link" :title="item.name">{{ item.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <address class="footer_right">
+                    <h3>Contact</h3>
+                    <p>{{ address }}</p>
+                    <p>{{ email }}</p>
+                    <p>{{ telephon }}</p>
+                </address>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

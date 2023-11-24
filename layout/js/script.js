@@ -17,7 +17,7 @@ const v = new Vue({
             },
             {
                 name: 'Project',
-                link: '#'
+                link: 'projects.html'
             },
             {
                 name: 'Blog',
