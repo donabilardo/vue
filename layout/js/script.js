@@ -10,6 +10,8 @@ const v = new Vue({
         tags: [],
         tagsClick: 'all',
         articleList: [],
+        projectSelectTag: 'all',
+        projectList: [],
         navbar: [
             {
                 name: 'Home',
@@ -136,6 +138,81 @@ const v = new Vue({
                 imgR: 'img/article_news/7-r.png',
                 text: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.' + '\n' + 'Lorem Ipsum is not simply random text. It has roots in a piece of classica.'
             },
+        ],
+        projectPage: [
+            {
+                id: 1,
+                name: 'Minimal Bedroom',
+                category: 'Bathroom',
+                date: '2017-02-06',
+                img: 'img/project/page/1.jpg',
+                imgR: 'img/project/page/1-r.jpg',
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
+            },
+            {
+                id: 2,
+                name: 'Minimal Bedroom',
+                category: 'Bathroom',
+                date: '2017-02-06',
+                img: 'img/project/page/1.jpg',
+                imgR: 'img/project/page/1-r.jpg',
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
+            },
+            {
+                id: 3,
+                name: 'Living Area',
+                category: 'Bathroom',
+                date: '2017-02-06',
+                img: 'img/project/page/1.jpg',
+                imgR: 'img/project/page/1-r.jpg',
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
+            },
+            {
+                id: 4,
+                name: 'Living Area',
+                category: 'Living Area',
+                date: '2017-02-06',
+                img: 'img/project/page/1.jpg',
+                imgR: 'img/project/page/1-r.jpg',
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
+            },
+            {
+                id: 5,
+                name: 'Kitchan',
+                category: 'Kitchan',
+                date: '2017-02-06',
+                img: 'img/project/page/1.jpg',
+                imgR: 'img/project/page/1-r.jpg',
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
+            },
+            {
+                id: 6,
+                name: 'Kitchan',
+                category: 'Kitchan',
+                date: '2017-02-06',
+                img: 'img/project/page/1.jpg',
+                imgR: 'img/project/page/1-r.jpg',
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
+            },
+            {
+                id: 7,
+                name: 'Bed Room',
+                category: 'Bed Room',
+                date: '2017-02-06',
+                img: 'img/project/page/1.jpg',
+                imgR: 'img/project/page/1-r.jpg',
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
+            },
+            {
+                id: 8,
+                name: 'Bed Room',
+                category: 'Bed Room',
+                date: '2017-02-06',
+                img: 'img/project/page/1.jpg',
+                imgR: 'img/project/page/1-r.jpg',
+                text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
+            }
+
         ]
     },
     methods: {
@@ -148,9 +225,17 @@ const v = new Vue({
         listAllArticle() {
             this.articleList = [];
             this.tagsClick = 'all';
+        },
+        selectProject(tag) {
+            this.projectList = [];
+            this.projectSelectTag = tag;
+            console.log(this.projectSelectTag);
+            console.log(this.projectList);
         }
+
     },
     computed: {
+
         getTags() {
             this.article.map(elem => {
                 this.tags.push(elem.category)
@@ -159,24 +244,6 @@ const v = new Vue({
             return this.tags;
         },
         getAllArticleByTag() {
-            // this.article.forEach(element => {
-            //     if (element.category === this.tagsClick) {
-            //         this.articleList.push(element)
-            //     }
-            // });
-            // return this.articleList
-
-            // if (this.tagsClick === 'all') {
-            //     return (this.article).slice(0, 5)
-            // } else {
-            //     this.article.forEach(element => {
-            //         if (element.category === this.tagsClick) {
-            //             this.articleList.push(element);
-            //             return this.articleList;
-            //         }
-            //     });
-            // }
-
             if (this.tagsClick != 'all') {
                 this.article.forEach(article => {
                     if (article.category === this.tagsClick) {
@@ -189,6 +256,17 @@ const v = new Vue({
                 })
             }
             return this.articleList
+        },
+
+        getProjectList() {
+            if (this.projectSelectTag != 'all') {
+                this.projectPage.forEach(projectItem => {
+                    if (projectItem.category === this.projectSelectTag) {
+                        this.projectList.push(projectItem)
+                    }
+                });
+            } 
+            return this.projectList
         }
 
     }

@@ -41,17 +41,38 @@
 
         <div class="container">
             <div class="tags__box">
-                <div class="tags__box-item">Bathroom</div>
-                <div class="tags__box-item tags__active">Bed Room</div>
-                <div class="tags__box-item">Kitchan</div>
-                <div class="tags__box-item">Living Area</div>
+                <div class="tags__box-item" @click="selectProject('Bathroom')">Bathroom</div>
+                <div class="tags__box-item tags__active"  @click="selectProject('Bed Room')">Bed Room</div>
+                <div class="tags__box-item" @click="selectProject('Kitchan')">Kitchan</div>
+                <div class="tags__box-item" @click="selectProject('Living Area')">Living Area</div>
             </div>
         </div>
 
         <main class="main">
-           <div class="container">
-            cdscd
-           </div>
+            <div class="container">
+                <div class="project__box">
+
+                    <section class="project__box-item" v-for="(item, index) in getProjectList" :key="index">
+                        <img :src="item.img" :srcset="item.imgR" :alt="item.text" class="project__item-img">
+                        <h3>{{item.name}}</h3>
+                        <span class="project__item-tag">{{item.category}}</span>
+                    </section>
+
+                    <!-- <section class="project__box-item">
+                        <img src="img/project/page/2.jpg" srcset="img/project/page/2-r.jpg" alt="" class="project__item-img">
+                        <h3>Modern Bedroom</h3>
+                        <span class="project__item-tag">Bed Room</span>
+                    </section>  
+                    
+                    
+                    <section class="project__box-item">
+                        <img src="img/project/page/3.jpg" srcset="img/project/page/3-r.jpg" alt="" class="project__item-img">
+                        <h3>Classic Minimal Bedroom</h3>
+                        <span class="project__item-tag">Kitchan</span>
+                    </section>  -->
+
+                </div>
+            </div>
         </main>
 
         <div class="paginator">
