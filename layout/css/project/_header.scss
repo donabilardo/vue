@@ -46,17 +46,27 @@
     margin-bottom: 65px;
 }
 
-.tags__box-item{
-
+.tags__active{
+    background: #CDA274;
+    color: #FFF;
+    cursor: pointer; 
 }
 
-.tags__active{
+.tags__box-item {
     display: flex;
-padding: 26px 66px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-border-radius: 18px;
-background: #CDA274;
-color: #FFF;
+   // padding: 26px 66px;
+   height: 100%;
+   width: 25%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 18px;
+    
+    
+
+    &:hover {
+        background: #CDA274;
+        color: #FFF;
+        cursor: pointer;
+    }
 }

@@ -935,10 +935,17 @@ address {
 }
 
 .tags__active {
+  background: #CDA274;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.tags__box-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 26px 66px;
+  height: 100%;
+  width: 25%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -947,8 +954,11 @@ address {
           align-items: center;
   gap: 10px;
   border-radius: 18px;
+}
+.tags__box-item:hover {
   background: #CDA274;
   color: #FFF;
+  cursor: pointer;
 }
 
 .main {
