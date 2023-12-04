@@ -154,8 +154,8 @@ const v = new Vue({
                 name: 'Minimal Bedroom',
                 category: 'Bathroom',
                 date: '2017-02-06',
-                img: 'img/project/page/1.jpg',
-                imgR: 'img/project/page/1-r.jpg',
+                img: 'img/project/page/2.jpg',
+                imgR: 'img/project/page/2-r.jpg',
                 text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
@@ -163,8 +163,8 @@ const v = new Vue({
                 name: 'Living Area',
                 category: 'Bathroom',
                 date: '2017-02-06',
-                img: 'img/project/page/1.jpg',
-                imgR: 'img/project/page/1-r.jpg',
+                img: 'img/project/page/3.jpg',
+                imgR: 'img/project/page/3-r.jpg',
                 text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
@@ -172,8 +172,8 @@ const v = new Vue({
                 name: 'Living Area',
                 category: 'Living Area',
                 date: '2017-02-06',
-                img: 'img/project/page/1.jpg',
-                imgR: 'img/project/page/1-r.jpg',
+                img: 'img/project/page/4.jpg',
+                imgR: 'img/project/page/4-r.jpg',
                 text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
@@ -181,8 +181,8 @@ const v = new Vue({
                 name: 'Kitchan',
                 category: 'Kitchan',
                 date: '2017-02-06',
-                img: 'img/project/page/1.jpg',
-                imgR: 'img/project/page/1-r.jpg',
+                img: 'img/project/page/5.jpg',
+                imgR: 'img/project/page/5-r.jpg',
                 text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
@@ -190,8 +190,8 @@ const v = new Vue({
                 name: 'Kitchan',
                 category: 'Kitchan',
                 date: '2017-02-06',
-                img: 'img/project/page/1.jpg',
-                imgR: 'img/project/page/1-r.jpg',
+                img: 'img/project/page/6.jpg',
+                imgR: 'img/project/page/6-r.jpg',
                 text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
@@ -199,8 +199,8 @@ const v = new Vue({
                 name: 'Bed Room',
                 category: 'Bed Room',
                 date: '2017-02-06',
-                img: 'img/project/page/1.jpg',
-                imgR: 'img/project/page/1-r.jpg',
+                img: 'img/project/page/7.jpg',
+                imgR: 'img/project/page/7-r.jpg',
                 text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             },
             {
@@ -208,8 +208,8 @@ const v = new Vue({
                 name: 'Bed Room',
                 category: 'Bed Room',
                 date: '2017-02-06',
-                img: 'img/project/page/1.jpg',
-                imgR: 'img/project/page/1-r.jpg',
+                img: 'img/project/page/8.jpg',
+                imgR: 'img/project/page/8-r.jpg',
                 text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, ex!'
             }
 
@@ -265,8 +265,11 @@ const v = new Vue({
                         this.projectList.push(projectItem)
                     }
                 });
-            } 
-            return this.projectList
+                return this.projectList
+            } else {
+                return this.projectPage
+            }
+
         }
 
     }
