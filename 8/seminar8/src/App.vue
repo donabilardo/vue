@@ -1,0 +1,32 @@
+<template>
+  <div id="app">
+    <ProductDetails></ProductDetails>
+  </div>
+</template>
+
+<script>
+import ProductDetails from './components/ProductDetails.vue';
+
+export default {
+  name: 'App',
+  components: {
+    ProductDetails
+  },
+  data() {
+    return {
+      myNum: 5,
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
