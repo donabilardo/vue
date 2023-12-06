@@ -1,27 +1,33 @@
 <template>
-    <div class="product__box">
-        <h1 class="product__box-title">{{ namePage }}</h1>
-        <div class="product__box-item" v-for="product in products" :key="product.id">
-            <h2 class="product__item-title">{{ product.name }}</h2>
-            <img 
-            :src="product.img" 
-            :alt="product.name"
-            @click="imagePeview(product.id)" 
-            class="product__item-img">
-            <p class="product__item-price">{{ Intl.NumberFormat("ru").format(product.price) }}$</p>
-            <p>На складе:{{ product.qnt }} </p>
-            <p>{{ qqq(product.qnt) }}</p>
+    <div class="main">
+        <PopUp v-if="popUpVisible" @closePopUp="closePopUp">
+            <img :src="qurentImgUrl" :alt="qurentImgAlt" class="big">
+        </PopUp>
+
+        <div class="product__box">
+            <h1 class="product__box-title">{{ namePage }}</h1>
+            <div class="product__box-item" v-for="product in products" :key="product.id" @click="openPopUp">
+                <h2 class="product__item-title">{{ product.name }}</h2>
+                <img :src="product.img" :alt="product.name" @click="imagePeview(product.id)" class="product__item-img">
+                <p class="product__item-price">{{ Intl.NumberFormat("ru").format(product.price) }}$</p>
+                <p>На складе:{{ product.qnt }} </p>
+                <p>{{ qqq(product.qnt) }}</p>
+            </div>
+
         </div>
-        <h2>Предпросмотр изображения (клик на картинку)</h2>
-        <img :src="qurentImgUrl" :alt="qurentImgAlt" class="big">
     </div>
 </template>
 
 <script>
+import PopUp from '../components/PopUp.vue'
 export default {
     name: 'ProductDetails',
+    components: {
+        PopUp
+    },
     data() {
         return {
+            popUpVisible: false,
             qurentImgIndex: 0,
             qntProduct: [],
             namePage: 'Каталог товаров',
@@ -55,6 +61,12 @@ export default {
         }
     },
     methods: {
+        openPopUp() {
+            this.popUpVisible = true
+        },
+        closePopUp() {
+            this.popUpVisible = false
+        },
         qqq(val) {
             if (val < 1) {
                 return 'Out of stock'

@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <ProductDetails></ProductDetails>
+  
   </div>
 </template>
 
 <script>
 import ProductDetails from './components/ProductDetails.vue';
+//import PopUp from './components/PopUp.vue';
 
 export default {
   name: 'App',
   components: {
-    ProductDetails
+    ProductDetails,
+   // PopUp
   },
   data() {
     return {
