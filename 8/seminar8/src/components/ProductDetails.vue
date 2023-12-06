@@ -1,19 +1,22 @@
 <template>
     <div class="main">
-        <PopUp v-if="popUpVisible" @closePopUp="closePopUp">
-            <img :src="qurentImgUrl" :alt="qurentImgAlt" class="big">
-        </PopUp>
+        <button @click="visible = !visible">{{ visible ? "скрыть товары" : "отобразить товары" }}</button>
+        <div v-show="visible">
+            <PopUp v-if="popUpVisible" @closePopUp="closePopUp">
+                <img :src="qurentImgUrl" :alt="qurentImgAlt" class="big">
+            </PopUp>
 
-        <div class="product__box">
-            <h1 class="product__box-title">{{ namePage }}</h1>
-            <div class="product__box-item" v-for="product in products" :key="product.id" @click="openPopUp">
-                <h2 class="product__item-title">{{ product.name }}</h2>
-                <img :src="product.img" :alt="product.name" @click="imagePeview(product.id)" class="product__item-img">
-                <p class="product__item-price">{{ Intl.NumberFormat("ru").format(product.price) }}$</p>
-                <p>На складе:{{ product.qnt }} </p>
-                <p>{{ qqq(product.qnt) }}</p>
+            <div class="product__box">
+                <h1 class="product__box-title">{{ namePage }}</h1>
+                <div class="product__box-item" v-for="product in products" :key="product.id" @click="openPopUp">
+                    <h2 class="product__item-title">{{ product.name }}</h2>
+                    <img :src="product.img" :alt="product.name" @click="imagePeview(product.id)" class="product__item-img">
+                    <p class="product__item-price">{{ Intl.NumberFormat("ru").format(product.price) }}$</p>
+                    <p>На складе:{{ product.qnt }} </p>
+                    <p>{{ qqq(product.qnt) }}</p>
+                </div>
+
             </div>
-
         </div>
     </div>
 </template>
@@ -27,6 +30,7 @@ export default {
     },
     data() {
         return {
+            visible: false,
             popUpVisible: false,
             qurentImgIndex: 0,
             qntProduct: [],
