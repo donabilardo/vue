@@ -1,14 +1,19 @@
 <template>
     <div class="product__box">
         <h1 class="product__box-title">{{ namePage }}</h1>
-        <div class="product__box-item" v-for="(product, index) in products" :key="index">
+        <div class="product__box-item" v-for="product in products" :key="product.id">
             <h2 class="product__item-title">{{ product.name }}</h2>
-            <img :src="product.img" :alt="product.name" class="product__item-img">
+            <img 
+            :src="product.img" 
+            :alt="product.name"
+            @click="imagePeview(product.id)" 
+            class="product__item-img">
             <p class="product__item-price">{{ Intl.NumberFormat("ru").format(product.price) }}$</p>
             <p>На складе:{{ product.qnt }} </p>
             <p>{{ qqq(product.qnt) }}</p>
         </div>
-
+        <h2>Предпросмотр изображения (клик на картинку)</h2>
+        <img :src="qurentImgUrl" :alt="qurentImgAlt" class="big">
     </div>
 </template>
 
@@ -17,6 +22,7 @@ export default {
     name: 'ProductDetails',
     data() {
         return {
+            qurentImgIndex: 0,
             qntProduct: [],
             namePage: 'Каталог товаров',
             products: [
@@ -55,8 +61,19 @@ export default {
             } else {
                 return 'Available'
             }
+        },
+        imagePeview(id) {
+            this.qurentImgIndex = id - 1
         }
     },
+    computed: {
+        qurentImgUrl() {
+            return this.products[this.qurentImgIndex].img
+        },
+        qurentImgAlt() {
+            return this.products[this.qurentImgIndex].name
+        }
+    }
 
 }
 </script>
@@ -69,7 +86,8 @@ export default {
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
-    gap: 15px
+    gap: 15px;
+    justify-content: space-between;
 }
 
 .product__box-title {
@@ -85,5 +103,11 @@ export default {
 .product__item-img {
     width: 100%;
     max-height: 150px;
+}
+
+.big {
+    width: 100%;
+    height: 100%;
+    align-self: center;
 }
 </style>
