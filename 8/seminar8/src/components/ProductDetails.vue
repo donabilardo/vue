@@ -2,7 +2,7 @@
     <div class="main">
         <button @click="visible = !visible">{{ visible ? "скрыть товары" : "отобразить товары" }}</button>
         <div v-show="visible">
-            <PopUp v-if="popUpVisible" @closePopUp="closePopUp">
+            <PopUp v-if="popUpVisible" @closePopUp="closePopUp" :PopUpName="qurentImgAlt">
                 <img :src="qurentImgUrl" :alt="qurentImgAlt" class="big">
             </PopUp>
 
@@ -80,7 +80,8 @@ export default {
         },
         imagePeview(id) {
             this.qurentImgIndex = id - 1
-        }
+        },
+
     },
     computed: {
         qurentImgUrl() {
@@ -114,6 +115,7 @@ export default {
 .product__box-item {
     box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     width: 280px;
+    background-color: #fff;
 }
 
 .product__item-img {

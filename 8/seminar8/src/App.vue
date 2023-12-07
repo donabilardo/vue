@@ -19,11 +19,26 @@ export default {
     return {
       myNum: 5,
     }
+  },
+  methods:{
+    created() {
+      this.myNum + 1
+      console.log(this.myNum);
+    },
+    mounted() {
+      this.myNum + 1
+      console.log(this.myNum); 
+    },
+    updated() {
+      this.myNum + 1
+      console.log(this.myNum);
+    },
   }
 }
 </script>
 
 <style lang="scss">
+@import 'assets/css/base.scss';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

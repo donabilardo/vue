@@ -2,7 +2,7 @@
     <div class="popup">
         <div class="popup__header">
             <div class="popup__header-title">
-                popup name
+                {{ PopUpName }}
             </div>
             <div class="popup__header-close" @click="closePopUp">X</div>
         </div>
@@ -23,12 +23,21 @@ export default {
             key: 1
         }
     },
+    props: {
+        PopUpName: {
+            type: String,
+            default() {
+                return 'неизвестный товар'
+            }
+        }
+    },
 
     methods: {
         closePopUp() {
             this.$emit('closePopUp')
         }
     },
+
 }
 </script>
 
