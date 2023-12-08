@@ -3,12 +3,17 @@
         <div class="book_box-item" v-for="item in books" :key="item.id">
             <h3>{{ item.name }}</h3>
             <p>{{ item.autor }}</p>
-            <button @click="readDesc(item.name, item.desc)">Читать описание</button>
+            <button @click="readDesc(item.name, item.desc)">Читать описание(Модальное окно)</button><br>
+            <SpoilerComponent @ReadSpoiler='ReadSpoiler(item.id)' :SpoilerName='SpoilerName'
+                :SpoilerDescription='SpoilerDesc'>
+            </SpoilerComponent>
         </div>
 
         <PopUp v-show="visibleDesc" @closePopUp="closePopUp" :PopUpName="PopUpName">
-        <p>{{ PopUpDesc }}</p>
+            <p>{{ PopUpDesc }}</p>
         </PopUp>
+
+
     </div>
 </template>
 
@@ -23,11 +28,15 @@
 
 <script>
 import PopUp from './PopUp.vue';
+import SpoilerComponent from './SpoilerComponent.vue';
+
 
 export default {
     name: 'BookList',
     data() {
         return {
+            SpoilerName: 'Читать описание',
+            SpoilerDesc: '',
             PopUpDesc: '',
             PopUpName: '',
             visibleDesc: false,
@@ -71,14 +80,21 @@ export default {
             ]
         };
     },
-    components: { PopUp },
+    components: {
+        PopUp,
+        SpoilerComponent
+    },
     methods: {
-        readDesc(name, desc){
+        ReadSpoiler(id) {
+            this.SpoilerDesc = ''
+            this.SpoilerDesc = this.books[id-1].desc
+        },
+        readDesc(name, desc) {
             this.PopUpDesc = desc;
             this.PopUpName = name;
             this.visibleDesc = true;
         },
-        closePopUp(){
+        closePopUp() {
             this.visibleDesc = false
         }
     }
