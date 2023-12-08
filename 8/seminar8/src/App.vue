@@ -1,33 +1,34 @@
 <template>
   <div id="app">
     <ProductDetails></ProductDetails>
-  
+    <BookList></BookList>
   </div>
 </template>
 
 <script>
 import ProductDetails from './components/ProductDetails.vue';
 //import PopUp from './components/PopUp.vue';
+import BookList from './components/BookList.vue'
 
 export default {
   name: 'App',
   components: {
     ProductDetails,
-   // PopUp
+    BookList
   },
   data() {
     return {
       myNum: 5,
     }
   },
-  methods:{
+  methods: {
     created() {
       this.myNum + 1
       console.log(this.myNum);
     },
     mounted() {
       this.myNum + 1
-      console.log(this.myNum); 
+      console.log(this.myNum);
     },
     updated() {
       this.myNum + 1
@@ -39,6 +40,7 @@ export default {
 
 <style lang="scss">
 @import 'assets/css/base.scss';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
