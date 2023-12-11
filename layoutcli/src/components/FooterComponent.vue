@@ -55,6 +55,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.footer{
+    padding-top: 150px
+}
 .social{
     display: flex;
     justify-content: left;

@@ -11,7 +11,7 @@
         <div class="header__box-breadcrump">Home / Project</div>
       </div>
     </header>
-
+    <ProductComponent></ProductComponent>
     <FooterComponent></FooterComponent>
   </div>
 </template>
@@ -19,18 +19,18 @@
 <script>
 import NavbarComponent from './components/NavbarComponent.vue';
 import FooterComponent from './components/FooterComponent.vue';
+import ProductComponent from './components/pages/products/ProductComponent';
 
 
 export default {
   name: 'App',
   components: {
     NavbarComponent,
-    FooterComponent
-    
+    FooterComponent,
+    ProductComponent
+
   }
 }
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

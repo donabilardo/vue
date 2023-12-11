@@ -8,7 +8,7 @@
 import { mapMutations } from 'vuex';
 export default {
     mounted() {
-        console.log(this.$store);
+        console.log('mounted');
     },
     name: 'CounterComponent',
     methods: {
