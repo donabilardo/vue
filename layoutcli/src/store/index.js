@@ -87,13 +87,18 @@ export default {
                 bought: false
             },
         ],
-        productCard: [],
+        productCard: [
+            {
+                id:1,
+                name:'111111'
+            }
+        ],
     },
     getters: {
         productListGetter(state) {
             return state.product;
         },
-        productCard(state) {
+        productCardGetter(state) {
             return state.productCard;
         }
     },

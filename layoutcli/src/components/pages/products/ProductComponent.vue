@@ -1,7 +1,7 @@
 <template>
         <div class="container">
             <div class="products">
-                <article class="products__item" v-for="product in productList" :key="product.id">
+                <article class="products__item" v-for="product in this.productListGetter" :key="product.id">
                     <div class="product__top">
                         <img :src="product.img" :alt="product.name" class="product__top-img">
                         <span class="product__top-category">{{ product.name }}</span>
@@ -10,25 +10,26 @@
                     <button>Добавить в корзину</button>
                 </article>
             </div>
+            <ProductCard></ProductCard>
         </div>
-        <!-- <ProductCard></ProductCard> -->
+        
 </template>
 
 <script>
-//import ProductCard from '../products/ProductCard.vue';
+import { mapGetters } from 'vuex';
+import ProductCard from '../products/ProductCard.vue';
 
 export default {
     name: 'ProductComponent',
-    // components: {
-    //     ProductCard
-    // },
+    components: {
+        ProductCard
+    },
     mounted() {
         // console.log(this.$store.state.product);
     },
     computed: {
-        productList() {
-            return this.$store.state.product
-        }
+        ...mapGetters(['productListGetter',]),
+
     }
 }
 </script>
@@ -39,6 +40,7 @@ export default {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 25px;
+    padding-bottom: 100px;
 }
 
 .products__item {
