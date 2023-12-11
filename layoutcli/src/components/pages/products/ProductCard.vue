@@ -2,23 +2,24 @@
     <div class="product__card">
         <h1>Корзина товаров</h1>
         <div class="product__card-item" v-for="item in this.productCardGetter" :key="item.id">
-<h2>{{ item.name }}</h2>
+            <h2>{{ item.name }}</h2>
         </div>
     </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+
 export default {
     name: 'ProductCard',
     mounted() {
-        if(this.$store.state.productCard.lenght === 0){
-        console.log('Корзина пустая');
-        console.log(this.$store.state.productCard.lenght);
+        if (this.$store.state.productCard.lenght === 0) {
+            console.log('Корзина пустая');
+            console.log(this.$store.state.productCard.lenght);
         }
     },
-    computed:{
-        ...mapGetters(['productCardGetter'])
+    computed: {
+        ...mapGetters(['productCardGetter','productCardGetter'])
     }
 }
 </script>
@@ -35,7 +36,7 @@ export default {
 
 }
 
-.product__card-item{
+.product__card-item {
     width: 280px;
 }
 </style>

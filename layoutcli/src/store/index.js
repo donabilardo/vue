@@ -1,13 +1,16 @@
 
 export default {
     state: {
-        count: 0,
-        logoImg: 'img/logo.svg',
-        siteName: 'GB - VUE.js',
-        siteSlogan: 'It is a long established fact that a reader will be distracted lookings.',
-        address: '55 East Birchwood Ave. Brooklyn, New York 11201',
-        telephon: '(123) 456 - 7890',
-        email: 'contact@interno.com',
+        siteInfo: [
+            { count: 0 },
+            { logoImg: 'img/logo.svg' },
+            { siteName: 'GB - VUE.js' },
+            { siteSlogan: 'It is a long established fact that a reader will be distracted lookings.' },
+            { address: '55 East Birchwood Ave. Brooklyn, New York 11201' },
+            { telephon: '(123) 456 - 7890' },
+            { email: 'contact@interno.com' }
+        ],
+
         menuLink: [
             {
                 name: 'Home',
@@ -89,8 +92,8 @@ export default {
         ],
         productCard: [
             {
-                id:1,
-                name:'111111'
+                id: 1,
+                name: '111111'
             }
         ],
     },
@@ -101,10 +104,13 @@ export default {
         productCardGetter(state) {
             return state.productCard;
         }
+//         siteInfoGetteg(state) {
+// return
+//         }
     },
     mutations: {
-        ADD_TO_CARD(state, product) {
-            this.productCard.push(product)
+        ADD_TO_CARD(state, productCard) {
+            state.productCard.push(productCard)
         },
         INCREMENT(state) {
             state.count++

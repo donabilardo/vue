@@ -1,18 +1,17 @@
 <template>
-        <div class="container">
-            <div class="products">
-                <article class="products__item" v-for="product in this.productListGetter" :key="product.id">
-                    <div class="product__top">
-                        <img :src="product.img" :alt="product.name" class="product__top-img">
-                        <span class="product__top-category">{{ product.name }}</span>
-                    </div>
-                    <div>Цена: {{ product.price }}</div>
-                    <button>Добавить в корзину</button>
-                </article>
-            </div>
-            <ProductCard></ProductCard>
+    <div class="container">
+        <div class="products">
+            <article class="products__item" v-for="product in this.productListGetter" :key="product.id">
+                <div class="product__top">
+                    <img :src="product.img" :alt="product.name" class="product__top-img">
+                    <span class="product__top-category">{{ product.name }}</span>
+                </div>
+                <div>Цена: {{ product.price }}</div>
+                <button @click="ADD_TO_CARD">Добавить в корзину</button>
+            </article>
         </div>
-        
+        <ProductCard></ProductCard>
+    </div>
 </template>
 
 <script>
@@ -27,8 +26,13 @@ export default {
     mounted() {
         // console.log(this.$store.state.product);
     },
+    methods: {
+        ADD_TO_CARD(){
+            this.ADD_TO_CARD
+        }
+    },
     computed: {
-        ...mapGetters(['productListGetter',]),
+        ...mapGetters(['productListGetter','productCardGetter']),
 
     }
 }
