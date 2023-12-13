@@ -7,7 +7,7 @@
                     <span class="product__top-category">{{ product.name }}</span>
                 </div>
                 <div>Цена: {{ product.price }}</div>
-                <button @click="ADD_TO_CARD">Добавить в корзину</button>
+                <button @click="ADD_TO_CARD(product.name, product.img, product.price)">Добавить в корзину</button>
             </article>
         </div>
         <ProductCard></ProductCard>
@@ -27,7 +27,14 @@ export default {
         // console.log(this.$store.state.product);
     },
     methods: {
-        ADD_TO_CARD(){
+        ADD_TO_CARD(name,img,price){
+            const card = {
+                name: name,
+                img: img,
+                price: price
+            }
+            console.log(card);
+            this.$store.state.productCard.push(card)
             this.ADD_TO_CARD
         }
     },

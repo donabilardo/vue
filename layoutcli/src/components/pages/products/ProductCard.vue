@@ -1,8 +1,10 @@
 <template>
     <div class="product__card">
-        <h1>Корзина товаров</h1>
+        
         <div class="product__card-item" v-for="item in this.productCardGetter" :key="item.id">
             <h2>{{ item.name }}</h2>
+            <img :src="item.img" :alt="item.name">
+            <span>Цена: {{ item.price }}</span>
         </div>
     </div>
 </template>
@@ -25,6 +27,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+h1{
+    width: 100%;
+}
 .product__card {
     width: 100%;
     display: flex;
@@ -38,5 +43,7 @@ export default {
 
 .product__card-item {
     width: 280px;
+    border: 1px solid black;
 }
+img{width: 260px;}
 </style>

@@ -1,15 +1,14 @@
 
 export default {
     state: {
-        siteInfo: [
-            { count: 0 },
-            { logoImg: 'img/logo.svg' },
-            { siteName: 'GB - VUE.js' },
-            { siteSlogan: 'It is a long established fact that a reader will be distracted lookings.' },
-            { address: '55 East Birchwood Ave. Brooklyn, New York 11201' },
-            { telephon: '(123) 456 - 7890' },
-            { email: 'contact@interno.com' }
-        ],
+
+        count: 0,
+        logoImg: 'img/logo.svg',
+        siteName: 'GB - VUE.js',
+        siteSlogan: 'It is a long established fact that a reader will be distracted lookings.',
+        address: '55 East Birchwood Ave. Brooklyn, New York 11201',
+        telephon: '(123) 456 - 7890',
+        email: 'contact@interno.com',
 
         menuLink: [
             {
@@ -48,7 +47,7 @@ export default {
                 id: 3,
                 name: 'Планшет',
                 price: 111,
-                img: 'https://ae04.alicdn.com/kf/S67194140cfdc4a9ca55d77be07b69524V.jpg_640x640.jpg',
+                img: 'https://moscow.shop.megafon.ru/images/goods/1517/151780_p_20.png',
                 date: new Date(Date.UTC(2015, 1, 1)),
                 qnt: 12,
                 bought: false
@@ -91,10 +90,7 @@ export default {
             },
         ],
         productCard: [
-            {
-                id: 1,
-                name: '111111'
-            }
+
         ],
     },
     getters: {
@@ -104,13 +100,20 @@ export default {
         productCardGetter(state) {
             return state.productCard;
         }
-//         siteInfoGetteg(state) {
-// return
-//         }
+        //         siteInfoGetteg(state) {
+        // return
+        //         }
     },
     mutations: {
-        ADD_TO_CARD(state, productCard) {
-            state.productCard.push(productCard)
+        ADD_TO_CARD(state, name, img, price) {
+            const card = {
+                name: name,
+                img: img,
+                price: price,
+                qnt: 0
+            }
+            console.log(card);
+            state.productCard.push(card)
         },
         INCREMENT(state) {
             state.count++
