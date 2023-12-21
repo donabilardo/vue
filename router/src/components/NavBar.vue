@@ -34,4 +34,7 @@ nav {
     font-size: 24px;
     text-transform: uppercase;
 }
+.router-link-exact-active{
+    color: red;
+}
 </style>
